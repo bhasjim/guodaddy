@@ -22,7 +22,7 @@ GuoDaddy is a group for COGS 121 at UCSD.
 ![](http://i.imgur.com/iXQW9xt.jpg)
 
 7. Happy Hour App **by David Moll**
-![](http://i.imgur.com/O1qCA8K.jpg)
+![](http://i.imgur.com/a/fHddo.jpg)
 
 8. Surfing App **by David Moll**
 ![](http://i.imgur.com/nwtcHW9.jpg)
