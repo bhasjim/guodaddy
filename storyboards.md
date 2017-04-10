@@ -20,3 +20,9 @@ GuoDaddy is a group for COGS 121 at UCSD.
 
 6. Popular Bars Bar Crawl Route **by Julian Joshua Komala**
 ![](http://i.imgur.com/iXQW9xt.jpg)
+
+7. Happy Hour App **by David Moll**
+![](http://i.imgur.com/O1qCA8K.jpg)
+
+8. Surfing App **by David Moll**
+![](http://i.imgur.com/nwtcHW9.jpg)
