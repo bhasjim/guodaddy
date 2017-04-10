@@ -10,7 +10,7 @@ GuoDaddy is a group for COGS 121 at UCSD.
 ![](http://i.imgur.com/fh4ku9F.jpg?raw=true)
 
 3. Popular Bars **by Justine Lin**
-![](http://imgur.com/a/8m399)
+![](http://i.imgur.com/8ojYlCL.jpg)
 
 4. Study Spots Off-Campus **by Justine Lin**
-![](http://imgur.com/a/ITfgN)
+![](http://i.imgur.com/GoYcg4i.jpg)
