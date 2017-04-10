@@ -14,3 +14,9 @@ GuoDaddy is a group for COGS 121 at UCSD.
 
 4. Study Spots Off-Campus **by Justine Lin**
 ![](http://i.imgur.com/GoYcg4i.jpg)
+
+5. Workout Tracking App **by Julian Joshua Komala**
+![](http://i.imgur.com/XabHpIU.jpg)
+
+6. Popular Bars Bar Crawl Route **by Julian Joshua Komala**
+![](http://i.imgur.com/nUyTpGc.jpg)
