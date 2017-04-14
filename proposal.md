@@ -25,10 +25,11 @@ The motivation behind this app is twofold. One, photographers can find locations
 
 Both of these goals are accomplished with a single map interface. At the top of the map will be three buttons for the **food** category, **portrait** category, and **landcape** categories. Using OpenCV and other tools, we will be able to present users with local cuisine, great places to photograph people, and great views. 
 
-The pictures will appear on the map as circles with numbers inside (representing the number of pictures at that location. As the user zooms in, the circles will split into circles with smaller numbers, representing more specific locations. As an example, Yosemite may appear as a circle with a large number of pictures, but after the user zooms in, it will split into circles at Half Dome, Clouds Rest, and Curry Village.
+The pictures will appear on the map as circles with numbers inside (representing the number of pictures at that location. As the user zooms in, the circles will split into circles with smaller numbers, representing more specific locations. As an example, Yosemite may appear as a circle with a large number of pictures, but after the user zooms in, the initial circle would split into circles at Half Dome, Clouds Rest, and Curry Village, each with the specific number of pictures taken there. 
 
 Locations will be automatically filled with public pictures that have that location. By checking a box in user settings, users can choose to add their private pictures as well. 
 
+An aspect of the app which will increase engagement and quality of content is a rating system which keeps the best content at the top of each dot's list. We plan on implementing this by allowing users to "star" pictures they like, and sorting the pictures by number of stars. This will make sure that people cannot advertise on the app by putting up unrelated pictures. 
 
 
 ### How We're Going to Split the Work: 
