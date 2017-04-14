@@ -3,7 +3,7 @@
 
 ### Project: InstaMap
 
-Taking great pictures is all about location. InstaMap helps you find the hottest locations to hone your art (and nab that perfect profile picture). 
+Taking great pictures is all about location. InstaMap scours Instagram to help you find the hottest locations to hone your art. 
 
 ![](http://i.imgur.com/0otoCaw.jpg)
 
@@ -14,14 +14,21 @@ Taking great pictures is all about location. InstaMap helps you find the hottest
 perhaps consider the category that the picture goes into? The image can be a food picture, a great location, or it could be outside of these categories. Controversial posts etc can also be popular. How would you differentiate?"
 
 
-> Alok: "I really liked the ideas by Bahari Hasjim. If you could combine the ideas behind both the storyboards together, that would be something that I would use :) "
+> Alok: "I really liked the ideas by Bahari Hasjim. If you could combine the ideas behind both the storyboards together, that would be something that I would use :)"
+
+The above pieces of feedback helped shape our features and the direction we took our initial ideas. The advice from Emily resulted in the "Categories" feature of our app, where we decided to split pictures up into the different types they were. Alok's feedback resulted in us deciding to use a map interface for placing Instagram pictures.  
+
+### Features: 
 
 
-Description of your proposed project’s features. You can add UI
-sketches here if you want, but no need for a full paper prototype.
-
-Description of how you will split the programming work amongst
-your 4 team members. Remember: everyone should write code!
+The motivation behind this app is twofold. One, photographers can find locations that other photographers have taken pictures, and try to replicate their shots or use their photoshoot locations. Two, it's a way for people who haven't been to certain locations to get an idea of what that area is like.
 
-Description of what pieces of feedback that you took from classmates
-and your TA to settle on this idea
+Both of these goals are accomplished with a single map interface. At the top of the map will be three buttons for the **food** category, **portrait** category, and **landcape** categories. Using OpenCV and other tools, we will be able to present users with local cuisine, great places to photograph people, and great views. 
+
+The pictures will appear on the map as circles with numbers inside (representing the number of pictures at that location. As the user zooms in, the circles will split into circles with smaller numbers, representing more specific locations. As an example, Yosemite may appear as a circle with a large number of pictures, but after the user zooms in, it will split into circles at Half Dome, Clouds Rest, and Curry Village.
+
+Locations will be automatically filled with public pictures that have that location. By checking a box in user settings, users can choose to add their private pictures as well. 
+
+
+
+### How We're Going to Split the Work: 
