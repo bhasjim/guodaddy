@@ -33,7 +33,6 @@ Locations will be automatically filled with public pictures that have that locat
 
 ### How We're Going to Split the Work: 
 
-### How We're Going to Split the Work: 
 
 Bahari: 
   - Research database possibilities and set up backend services as necessary.
