@@ -33,15 +33,21 @@ Locations will be automatically filled with public pictures that have that locat
 
 ### How We're Going to Split the Work: 
 
+### How We're Going to Split the Work: 
+
 Bahari: Research database possibilities and set up backend services as necessary.
   - Will be tasked with finding at least two different backend services that will work for our application.
   - Research databases that can store information we need.
+  
 Justine: Sketch out possible designs and develop UI/UX using HTML,CSS,JS and potential frontend frameworks.
   - Create at least two designs that can be done so we can implement A/B testing
   - Research potential frontend frameworks and servers to host our application.
+  
 David: Set up routing of backend to frontend with Javascript REST API.
   - Make sure we are able to communicate with the backend and display it to the user.
   - Help tie in backend services with databases
+  
 Josh: Code up frontend using HTML, CSS, Javascript and help with backend setup.
   - Develop a rough draft of the designs we have and maintain good DOM structure.
   - Help set up and research of backend.
+ 
