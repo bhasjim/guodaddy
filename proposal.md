@@ -18,14 +18,18 @@ perhaps consider the category that the picture goes into? The image can be a foo
 
 The above pieces of feedback helped shape our features and the direction we took our initial ideas. The advice from Emily resulted in the "Categories" feature of our app, where we decided to split pictures up into the different types they were. Alok's feedback resulted in us deciding to use a map interface for placing Instagram pictures.  
 
-### Features: 
+### Storyboard
 
+![](http://i.imgur.com/g16CFIe.jpg)
+
+
+### Features: 
 
 The motivation behind this app is twofold. One, photographers can find locations that other photographers have taken pictures, and try to replicate their shots or use their photoshoot locations. Two, it's a way for people who haven't been to certain locations to get an idea of what that area is like.
 
 Both of these goals are accomplished with a single map interface. At the top of the map will be three buttons for the **food** category, **portrait** category, and **landcape** categories. Using OpenCV and other tools, we will be able to present users with local cuisine, great places to photograph people, and great views. 
 
-The pictures will appear on the map as circles with numbers inside (representing the number of pictures at that location. As the user zooms in, the circles will split into circles with smaller numbers, representing more specific locations. As an example, Yosemite may appear as a circle with a large number of pictures, but after the user zooms in, the initial circle would split into circles at Half Dome, Clouds Rest, and Curry Village, each with the specific number of pictures taken there. 
+The pictures will appear on the map as circles with numbers inside (representing the number of pictures at that location. As the user zooms in, the circles will split into circles with smaller numbers, representing more specific locations. As an example, Yosemite may appear as a circle with a large number of pictures, but after the user zooms in, the initial circle would split into circles at Half Dome, Clouds Rest, Curry Village, etc, each with the specific number of pictures taken there. 
 
 Locations will be automatically filled with public pictures that have that location. By checking a box in user settings, users can choose to add their private pictures as well. 
 
