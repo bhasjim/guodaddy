@@ -4,7 +4,7 @@ var router = express.Router();
 var path = require('path');
 var filePath = __dirname + '/views/';
 
-app.use(express.static(path.join('public')));
+app.use(express.static('public'));
 
 app.use(function (req,res,next) {
   console.log("/" + req.method);
@@ -12,15 +12,15 @@ app.use(function (req,res,next) {
 });
 
 app.get("/",function(req,res){
-  res.sendFile(filePath + 'index.html');
+  res.sendFile(filePath + 'cover.html');
 });
 
 app.get("/about",function(req,res){
   res.sendFile(filePath + "about.html");
 });
 
-app.get("/cover", function(req,res){
-  res.sendFile(filePath + "cover.html");
+app.get("/index", function(req,res){
+  res.sendFile(filePath + "index.html");
 });
 
 app.get("/contact",function(req,res){
