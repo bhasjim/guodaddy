@@ -19,9 +19,6 @@ app.get("/about",function(req,res){
   res.sendFile(filePath + "about.html");
 });
 
-app.get("/index", function(req,res){
-  res.sendFile(filePath + "index.html");
-});
 
 app.get("/contact",function(req,res){
   res.sendFile(filePath + "contact.html");
