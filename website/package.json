@@ -1,10 +1,14 @@
 {
-  "name" : "website-using-express",
-  "version" : "0.0.1",
-  "scripts" : {
-    "start" : "node Server.js"
+  "name": "website-using-express",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node server.js"
   },
-  "dependencies" : {
-    "express" : "latest"
+  "dependencies": {
+    "bootstrap": "latest",
+    "express": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
