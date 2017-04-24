@@ -1,29 +1,29 @@
-var express = require("express");
+var express = require('express');
 var app = express();
 var router = express.Router();
-var path = require("path");
+var path = require('path');
 var filePath = __dirname + '/views/';
 
-router.use(express.static(path.join(__dirname + "/lib/")));
+app.use(express.static(path.join('public')));
 
-router.use(function (req,res,next) {
+app.use(function (req,res,next) {
   console.log("/" + req.method);
   next();
 });
 
-router.get("/",function(req,res){
-  res.sendFile(filePath + "index.html");
+app.get("/",function(req,res){
+  res.sendFile(filePath + 'index.html');
 });
 
-router.get("/about",function(req,res){
+app.get("/about",function(req,res){
   res.sendFile(filePath + "about.html");
 });
 
-router.get("/cover", function(req,res){
+app.get("/cover", function(req,res){
   res.sendFile(filePath + "cover.html");
 });
 
-router.get("/contact",function(req,res){
+app.get("/contact",function(req,res){
   res.sendFile(filePath + "contact.html");
 });
 
