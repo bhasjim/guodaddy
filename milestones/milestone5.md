@@ -11,3 +11,5 @@ Utilized OpenLayers to pinpoint the current location of the user. This completes
 ![](http://i.imgur.com/t0OXJe4.jpg?raw=true)
 
 # David Moll
+Used the Google Maps API to put the first version of a map up on the website, including several sample pins to test functionality.
+![](http://i.imgur.com/oxEZRGY.png?raw=true)
