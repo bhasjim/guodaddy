@@ -1,4 +1,5 @@
 # Bahari Hasjim
+Set up the base skeleton of the website with Bootstrap, express, and node. Also implemented the initial theme of the website.
 
 # Joshua Komala
 
