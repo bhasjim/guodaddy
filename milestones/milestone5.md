@@ -3,6 +3,8 @@ Set up the base skeleton of the website with Bootstrap, express, and node. Also 
 ![](http://i.imgur.com/0P9cLKr.png?raw=true)
 
 # Joshua Komala
+Started pipeline in Heroku to launch our website on. This sets the foundation of how our application will be hosted.
+![](http://i.imgur.com/PPU5syR.png?raw=true)
 
 # Justine Lin
 Utilized OpenLayers to pinpoint the current location of the user. This completes the first part of our application which involves simply saying "This is where I am".
