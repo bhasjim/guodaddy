@@ -29,6 +29,10 @@ app.get("/testmap",function(req,res){
   res.sendFile(filePath + "testmap.html");
 });
 
+app.get("/testGeo",function(req,res){
+  res.sendFile(filePath + "testGeo.html");
+});
+
 app.use("/",router);
 
 
