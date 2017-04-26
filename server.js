@@ -24,6 +24,11 @@ app.get("/contact",function(req,res){
   res.sendFile(filePath + "contact.html");
 });
 
+
+app.get("/testmap",function(req,res){
+  res.sendFile(filePath + "testmap.html");
+});
+
 app.use("/",router);
 
 
