@@ -6,7 +6,8 @@
   },
   "dependencies": {
     "bootstrap": "latest",
-    "express": "latest"
+    "express": "latest",
+    "geolocation-marker": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

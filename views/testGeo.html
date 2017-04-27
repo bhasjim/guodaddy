@@ -25,25 +25,27 @@
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
-      var map, infoWindow;
+      var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
+      var map, infoWindow, GeoMarker;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 117.1611, lng: 32.7157},
-          zoom: 12
+          zoom: 12,
         });
         infoWindow = new google.maps.InfoWindow;
 
 
-        var goldStar = {
-          path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-          fillColor: 'yellow',
-          fillOpacity: 0.8,
-          scale: 1,
-          strokeColor: 'gold',
-          strokeWeight: 14
-        };
-
-
+        // GeoMarker = new GeolocationMarker(map);
+        // GeoMarker.setCircleOptions({fillColor: '#808080'});
+        // google.maps.event.addListenerOnce(GeoMarker, 'position_changed',
+        //   function() {
+        //     map.setCenter(this.getPosition());
+        //     map.fitBounds(this.getBounds());
+        //   });
+        // google.maps.event.addListener(GeoMarker, 'geolocation_error',
+        // function(e) {
+        //   alert('Error obtaining position. Message: ' + e.message);
+        // });
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -53,16 +55,17 @@
               lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
+
             infoWindow.open(map);
             map.setCenter(pos);
 
-            var marker = new google.maps.Marker({
+            var userMarker = new google.maps.Marker({
               position: pos,
-              icon: goldStar,
-              map: map
+              map: map,
+              icon: im
             });
+
+
 
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
