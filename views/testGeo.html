@@ -100,15 +100,6 @@
             });
 
 
-            map.addListener('center_changed', function() {
-              // 3 seconds after the center of the map has changed, pan back to the
-              // marker.
-              console.log("in listener");
-              window.setTimeout(function() {
-                map.panTo(locMarker.getPosition());
-              }, 3000);
-            });
-
 
 
             // var userMarker = new google.maps.Marker({
