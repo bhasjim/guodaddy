@@ -12,3 +12,5 @@ Put markers where there are hotspots in the map.
 ![](http://i.imgur.com/oDeL7Il.png)
 
 # David Moll
+Figured out geoLocaion for pictures so they can be correctly located on map. (If the picture has a geolocation attribute)
+![](http://i.imgur.com/z3UMcV9.png)
