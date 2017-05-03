@@ -5,6 +5,8 @@ var path = require('path');
 var filePath = __dirname + '/views/';
 
 app.use(express.static('public'));
+app.use(express.static('js'));
+
 
 app.use(function (req,res,next) {
   console.log("/" + req.method);
@@ -20,6 +22,10 @@ app.get("/",function(req,res){
 
 app.get("/about",function(req,res){
   res.sendFile(filePath + "about.html");
+});
+
+app.get("/json",function(req,res){
+  res.sendFile(filePath + "jsonTest.html");
 });
 
 
