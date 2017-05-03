@@ -24,6 +24,7 @@
     <div id="map"></div>
 
     <div id="locationInfo">
+      <div id="closeLoc"> X </div>
       Current Location
     </div>
     <script>
@@ -107,6 +108,13 @@
               $('#locationInfo').slideDown();
             });
 
+            $('#closeLoc').on('click', function(){
+              $('#locationInfo').slideUp();
+            });
+
+            $('#locationInfo').on('click',function(){
+              $('#locationInfo').css("animation-name:slideUp; animation-duration:1s");
+            });
 
 
 
