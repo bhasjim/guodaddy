@@ -38,8 +38,8 @@ app.get("/testmap",function(req,res){
   res.sendFile(filePath + "testmap.html");
 });
 
-app.get("/testGeo",function(req,res){
-  res.sendFile(filePath + "testGeo.html");
+app.get("/map",function(req,res){
+  res.sendFile(filePath + "map.html");
 });
 
 app.use("/",router);
