@@ -8,16 +8,28 @@ html,body{
 #locationInfo{
 	position: fixed;
 	width:100%;
-	height: 20vh;
 	bottom:0px;
 	background-color: #3abde8;
 	display: none;
 	text-align:center;
-	font-size:4em;
+	opacity:0.9;
 	/*background-image: url("../images/ucsd.jpeg");
 	background-repeat: no-repeat;
 	background-size :100%;*/
 
+}
+#locationName{
+	padding-top:20px;
+	font-size:4em;
+}
+
+.locOpen{
+	height:100vh;
+	animation-name:slideUp;
+	animation-duration:1s;
+}
+.locClose{
+	height:20vh;
 }
 
 #closeLoc{
@@ -28,7 +40,13 @@ html,body{
 	right:10px;
 	cursor:pointer;
 }
-
+#openLoc{
+	font-size:50px;
+	color:white;
+	left:49vw;
+	position:absolute;
+	cursor:pointer;
+}	
 @keyframes slideUp{
 	0% {height:20vh;}
 	100%{height:100vh;}
