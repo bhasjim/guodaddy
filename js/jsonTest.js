@@ -1,12 +1,18 @@
-var apiurl = "https://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=65030e1f766ba9dccb6deb836165ca4a&user_id=129194286@N08&format=json";
 var imageUrl;
 var image;
+
+var apiParams = { //parameters for API calls
+  "max_upload_date": "1493856000",
+  "bbox": [-117.285576,32.805377,-117.185326,32.896597]
+}
+
+var searchURL  = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=65030e1f766ba9dccb6deb836165ca4a"+"&max_upload_date=" + apiParams.max_upload_date + "&bbox="+apiParams.bbox +"&accuracy=6&has_geo=1&extras=geo&format=json";
 console.log("hello");
 
 $(document).ready(function () {
   $('#get-data').click(function () {
     var showData = $('#show-data');
-    $.getJSON(apiurl + "&jsoncallback=?", function (data) { //need that &jsoncallback
+    $.getJSON(searchURL + "&jsoncallback=?", function (data) { //need that &jsoncallback
       console.log(data);
       console.log(data.photos.photo.length);
 
