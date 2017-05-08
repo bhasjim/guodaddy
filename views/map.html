@@ -4,6 +4,7 @@
     <title>Geolocation</title>
     <link href="./../css/pulsate.css" rel="stylesheet">
     <link href="./../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -24,9 +25,10 @@
     <div id="map"></div>
 
     <div id="locationInfo" class="locClose">
-      <div id="closeLoc"> X </div>
-       <div id="openLoc"> ^</div> 
+      <div id="closeLoc"> <i class="glyphicon glyphicon-remove"></i> </div>
+       <div id="openLoc"> <i class="glyphicon glyphicon-chevron-up"></i> </div> 
       <div id="locationName">Current Location</div>
+      <div id="show-data"></div>
     </div>
     <script>
       // Note: This example requires that you consent to location sharing when
@@ -212,5 +214,6 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ3Vw5gKB89VuUhZdJr2EgqxUg5sOgAiY&callback=initMap">
     </script>
+    <script src="/jsonTest.js"></script>
   </body>
 </html>

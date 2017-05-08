@@ -10,7 +10,7 @@ var searchURL  = "https://api.flickr.com/services/rest/?&method=flickr.photos.se
 console.log("hello");
 
 $(document).ready(function () {
-  $('#get-data').click(function () {
+  $('#locationInfo').click(function () {
     var showData = $('#show-data');
     $.getJSON(searchURL + "&jsoncallback=?", function (data) { //need that &jsoncallback
       console.log(data);
@@ -20,6 +20,7 @@ $(document).ready(function () {
         imageUrl = "http://farm" + data.photos.photo[index].farm + ".static.flickr.com/" + data.photos.photo[index].server + "/"+data.photos.photo[index].id + "_"+data.photos.photo[index].secret + ".jpg";
         var image = document.createElement("img");
         image.src = imageUrl;
+        console.log(image);
 
         //document.getElementById("show-data").appendChild(elem);
         showData.append(image); //does same as above
@@ -30,3 +31,4 @@ $(document).ready(function () {
     });
   });
 });
+

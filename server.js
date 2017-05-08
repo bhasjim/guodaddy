@@ -3,6 +3,7 @@ var app = express();
 var router = express.Router();
 var path = require('path');
 var filePath = __dirname + '/views/';
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 app.use(express.static('js'));
@@ -46,6 +47,6 @@ app.use("/",router);
 
 
 
-app.listen(3000,function(){
+app.listen(PORT,function(){
   console.log("Live at Port 3000");
 });
