@@ -23,9 +23,10 @@
   <body>
     <div id="map"></div>
 
-    <div id="locationInfo">
+    <div id="locationInfo" class="locClose">
       <div id="closeLoc"> X </div>
-      Current Location
+       <div id="openLoc"> ^</div> 
+      <div id="locationName">Current Location</div>
     </div>
     <script>
       // Note: This example requires that you consent to location sharing when
@@ -110,10 +111,13 @@
 
             $('#closeLoc').on('click', function(){
               $('#locationInfo').slideUp();
+              $('#locationInfo').removeClass('locOpen');
+              $('#locationInfo').addClass('locClose');
             });
 
-            $('#locationInfo').on('click',function(){
-              $('#locationInfo').css("animation-name:slideUp; animation-duration:1s");
+            $('#openLoc').on('click',function(){
+              $('#locationInfo').removeClass('locClose');
+              $('#locationInfo').addClass('locOpen');
             });
 
 
