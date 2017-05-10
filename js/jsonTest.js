@@ -1,6 +1,6 @@
 var imageUrl;
 var image;
-
+var markerClusterer = null;
 
 var apiParams = { //parameters for API calls
   "key": "65030e1f766ba9dccb6deb836165ca4a",
@@ -96,10 +96,14 @@ function initMap() {
       });
 
       map.addListener('bounds_changed', function(e) {
-        deleteMarkers();
+        deleteMarkers();  // clears map
+        if (markerClusterer) {    // clears clusters
+          markerClusterer.clearMarkers();
+        }
         getPhotoData(map.getBounds());
       });
       infoWindow = new google.maps.InfoWindow();
+      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m'})
 
     }, function() {
       handleLocationError(true, errorWindow, map.getCenter());
@@ -175,7 +179,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 $(document).ready(function() {
-
-
   initMap();
 });
