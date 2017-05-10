@@ -12,4 +12,4 @@ Additionally, the pins now reload every time the bounds of the map are changed. 
 ![](http://i.imgur.com/4qrcrlg.png)
 
 # Bahari Hasjim 
-I fixed the Flickr API request so that we were getting all of the pictures from the locations. Also worked with David to configure getting the box of the google maps window so that we can pull photosfrom Flickr according to our current google maps window. Then, I updated all of the pins to be fires. Also just cleaned up code so it is better organized.
+I fixed the Flickr API request so that we were getting pictures according to their geotagged locations. Finally figured out how to use bbox, to get all of the pictures in a longitude/latitude box. Also worked with David to configure getting the box of the google maps window so that we can pull photos from Flickr according to our current google maps window. Then, I updated all of the pins to be fires. Also just cleaned up code so it is better organized.
