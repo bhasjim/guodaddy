@@ -10,3 +10,5 @@ From last week until now, we've put in a ton of work to make the app based entir
 Additionally, the pins now reload every time the bounds of the map are changed. For example, if the user zooms in from looking at the whole of California, to just looking at San Diego, the pins will disappear and just pins for San Diego will be loaded (resulting in much more photos for that area). 
 
 
+# Bahari Hasjim 
+I fixed the Flickr API request so that we were getting all of the pictures from the locations. Also worked with David to configure getting the box of the google maps window so that we can pull photosfrom Flickr according to our current google maps window. Then, I updated all of the pins to be fires. Also just cleaned up code so it is better organized.
