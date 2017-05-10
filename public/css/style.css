@@ -53,3 +53,7 @@ html,body{
 	100%{height:100vh;}
 
 }
+
+#centered-col {
+    padding: 20px;
+}
