@@ -67,7 +67,6 @@ function initMap() {
         zoom: 12
       });
 
-      setMarkers(map);
       errorWindow = new google.maps.InfoWindow;
 
                 // then create the new marker
@@ -165,6 +164,14 @@ var deleteMarkers = function() {
     markers[i].setMap(null);
   }
 };
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
 
 
 $(document).ready(function() {
