@@ -6,7 +6,8 @@ var apiParams = { //parameters for API calls
   "max_upload_date": "1493856000",
   "bbox": [-117.285576,32.805377,-117.185326,32.896597]
 }
-
+var searchURL  = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=65030e1f766ba9dccb6deb836165ca4a"+"&max_upload_date=" + apiParams.max_upload_date + "&bbox="+apiParams.bbox +"&accuracy=6&has_geo=1&extras=geo&format=json";
+console.log("bbox lolol: " + apiParams.bbox)
 var searchURL  = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key="+ apiParams.key +"&max_upload_date=" + apiParams.max_upload_date + "&bbox="+apiParams.bbox +"&accuracy=6&has_geo=1&extras=geo&format=json";
 var markers = [];
 
@@ -17,8 +18,11 @@ var getPhotoData = function(bounds) {
         apiKey: "4cd3d05ce08d3d4fa414116b3e3c247e"
       }
       var bbox = bounds.toJSON();
+      var bboxString = bounds.toString().replace(/\(/g,"");
+      var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
+      console.log("hey: " + bboxString);
       var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
-        apiParams.key + "&bbox=" + bbox + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
+        apiParams.key + "&bbox=" + bboxString + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
       $.getJSON(url, params, function(data) {
         addMarkers(data.photos);
       });
