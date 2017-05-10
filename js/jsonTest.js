@@ -1,5 +1,6 @@
 var imageUrl;
 var image;
+var infoWindow;
 
 
 var apiParams = { //parameters for API calls
@@ -28,22 +29,6 @@ var getPhotoData = function(bounds) {
         addMarkers(data.photos);
       });
     };
-
-// var initMap = function() {
-//   map = new google.maps.Map(document.getElementById('map'), {
-//     center: {
-//       lat: 32.805377,
-//       lng: -117.285576
-//     },
-//     zoom: 8
-//   });
-//   map.addListener('bounds_changed', function(e) {
-//     deleteMarkers();
-//     getPhotoData(map.getBounds());
-//   });
-//   infoWindow = new google.maps.InfoWindow();
-// };
-
 
 var map, errorWindow;
 function initMap() {
@@ -95,7 +80,7 @@ function initMap() {
         $('#locationInfo').addClass('locOpen');
       });
 
-      map.addListener('bounds_changed', function(e) {
+      map.addListener('idle', function(e) {
         deleteMarkers();
         getPhotoData(map.getBounds());
       });
@@ -144,8 +129,6 @@ var addMarkers = function(results) {
       $('#locationInfo').removeClass('locClose');
       $('#locationInfo').addClass('locOpen');
     });
-
-
     markers.push(marker);
     setInfoWindowContent(marker, imgHTML)
   });
@@ -175,7 +158,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 $(document).ready(function() {
-
-
   initMap();
 });
