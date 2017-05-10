@@ -16,3 +16,6 @@ I fixed the Flickr API request so that we were getting pictures according to the
 
 # Justine Lin
 My position was mainly focused on UI and because our team mainly focused on the backend this time around, I did not do much coding. I did sketch up some ideas regarding what the UI would look like. 
+
+# Joshua Komala
+I mainly focused on trying to connect the data pulld from the Flickr api to the frontend. Now when you pull up the bottom bar, the images populate the new div. I also finally fixed the application deployment onto heroku. The app is now live on appexposure.herokuapp.com
