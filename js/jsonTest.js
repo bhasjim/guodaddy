@@ -95,7 +95,7 @@ function initMap() {
         $('#locationInfo').addClass('locOpen');
       });
 
-      map.addListener('bounds_changed', function(e) {
+      map.addListener('idle', function(e) {
         deleteMarkers();  // clears map
         if (markerClusterer) {    // clears clusters
           markerClusterer.clearMarkers();
@@ -108,6 +108,7 @@ function initMap() {
     }, function() {
       handleLocationError(true, errorWindow, map.getCenter());
     });
+
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, errorWindow, map.getCenter());
@@ -129,7 +130,7 @@ var addMarkers = function(results) {
       null, // size
       null, // origin
       new google.maps.Point( 0, 0 ), // anchor (move to center of marker)
-      new google.maps.Size( 17, 17 )); // scaled size (required for Retina display icon)
+      new google.maps.Size( 20, 20 )); // scaled size (required for Retina display icon)
     imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_m.jpg' + " alt=" + photo.title + "/>";
     photoLocation = new google.maps.LatLng(photo.latitude, photo.longitude);
     marker = new google.maps.Marker({icon:fireImage,position: photoLocation,map:map});
