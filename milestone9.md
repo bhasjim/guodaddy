@@ -23,5 +23,5 @@ I focused this week on the core piece of our app - making sure there were pins o
 My position was mainly focused on UI and because our team mainly focused on the backend this time around, I did not do much coding. I did sketch up some ideas regarding what the UI would look like. 
 
 
-# Joshua Komala
+## Joshua Komala
 I mainly focused on trying to connect the data pulled from the Flickr api to the frontend. Now when you pull up the bottom bar, the images populate the new div. I also finally fixed the application deployment onto heroku. The app is now live on appexposure.herokuapp.com
