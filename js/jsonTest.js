@@ -19,7 +19,7 @@ var getPhotoData = function(bounds) {
       var bbox = bounds.toJSON();
       var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
         apiParams.key + "&bbox=" + bbox + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
-      $.getJSON(searchURL, params, function(data) {
+      $.getJSON(url, params, function(data) {
         addMarkers(data.photos);
       });
     };
@@ -71,8 +71,6 @@ var deleteMarkers = function() {
 
 $(document).ready(function() {
 
-  
+
   initMap();
 });
-
-
