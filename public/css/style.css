@@ -61,3 +61,6 @@ html,body{
 #centered-col {
     padding: 20px;
 }
+#show-data{
+	display:none;
+}
