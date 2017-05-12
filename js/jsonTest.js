@@ -7,9 +7,6 @@ var apiParams = { //parameters for API calls
   "max_upload_date": "1493856000",
   "bbox": [-117.285576,32.805377,-117.185326,32.896597]
 }
-var searchURL  = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=65030e1f766ba9dccb6deb836165ca4a"+"&max_upload_date=" + apiParams.max_upload_date + "&bbox="+apiParams.bbox +"&accuracy=6&has_geo=1&extras=geo&format=json";
-console.log("bbox lolol: " + apiParams.bbox)
-var searchURL  = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key="+ apiParams.key +"&max_upload_date=" + apiParams.max_upload_date + "&bbox="+apiParams.bbox +"&accuracy=6&has_geo=1&extras=geo&format=json";
 var markers = [];
 
 var getPhotoData = function(bounds) {
@@ -28,21 +25,6 @@ var getPhotoData = function(bounds) {
         addMarkers(data.photos);
       });
     };
-
-// var initMap = function() {
-//   map = new google.maps.Map(document.getElementById('map'), {
-//     center: {
-//       lat: 32.805377,
-//       lng: -117.285576
-//     },
-//     zoom: 8
-//   });
-//   map.addListener('bounds_changed', function(e) {
-//     deleteMarkers();
-//     getPhotoData(map.getBounds());
-//   });
-//   infoWindow = new google.maps.InfoWindow();
-// };
 
 
 var map, errorWindow;
@@ -102,8 +84,8 @@ function initMap() {
         }
         getPhotoData(map.getBounds());
       });
-      infoWindow = new google.maps.InfoWindow();
-      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m'})
+      infoWindow = new google.maps.InfoWindow({disableAutoPan : true});
+      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 5})
 
     }, function() {
       handleLocationError(true, errorWindow, map.getCenter());
@@ -154,7 +136,7 @@ var addMarkers = function(results) {
     markers.push(marker);
     setInfoWindowContent(marker, imgHTML)
   });
-
+  markerClusterer.addMarkers(markers);
 };
 
 var setInfoWindowContent = function(marker, content) {
@@ -168,6 +150,7 @@ var deleteMarkers = function() {
   for (i = 0; i < markers.length; i += 1) {
     markers[i].setMap(null);
   }
+  markers = [];
 };
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
