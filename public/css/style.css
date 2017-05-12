@@ -11,9 +11,8 @@ html,body{
 	bottom:0px;
 	display: none;
 	text-align:center;
-	background-color: #333;
-	color:white;
-	opacity:0.9;
+	background-color: rgba(255, 255, 255, .7);
+
 
 	/*background-image: url("../images/ucsd.jpeg");
 	background-repeat: no-repeat;
@@ -37,7 +36,7 @@ html,body{
 
 #closeLoc{
 	font-size:20px;
-	color:white;
+	color:black;
 	position:absolute;
 	top:10px;
 	right:10px;
@@ -46,7 +45,7 @@ html,body{
 #openLoc{
 	font-size:30px;
 	width:200px;
-	color:white;
+	color:black;
 	margin:auto;
 	cursor:pointer;
 }
