@@ -82,11 +82,12 @@ function initMap() {
 
 
       map.addListener('idle', function(e) {
-        deleteMarkers();
-        // if (markerClusterer) {    // clears clusters
-        //   markerClusterer.clearMarkers();
-        // }
+        deleteMarkers();  // clears map
+        if (markerClusterer) {    // clears clusters
+          markerClusterer.clearMarkers();
+        }
         getPhotoData(map.getBounds());
+
       });
       infoWindow = new google.maps.InfoWindow();
       markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m'})
