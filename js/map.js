@@ -130,11 +130,13 @@ var addMarkers = function(results) {
       $('#locationInfo').slideUp();
       $('#locationInfo').removeClass('locOpen');
       $('#locationInfo').addClass('locClose');
+      $('#show-data').hide();
     });
 
     $('#openLoc').on('click',function(){
       $('#locationInfo').removeClass('locClose');
       $('#locationInfo').addClass('locOpen');
+      $('#show-data').show();
     });
     markers.push(marker);
     setInfoWindowContent(marker, imgHTML)
@@ -144,9 +146,10 @@ var addMarkers = function(results) {
 
 var setInfoWindowContent = function(marker, content) {
   google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.setContent(content);
-    //$('#show-data').append(content);
-    infoWindow.open(map, marker);
+    //infoWindow.setContent(content);
+    $('#show-data').empty();
+    $('#show-data').append(content);
+    //infoWindow.open(map, marker);
   });
 };
 
