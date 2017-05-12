@@ -1,6 +1,5 @@
 var imageUrl;
 var image;
-var infoWindow;
 var markerClusterer = null;
 
 var apiParams = { //parameters for API calls
@@ -67,8 +66,16 @@ function initMap() {
         $('#locationInfo').slideDown();
       });
 
-      
+      $('#closeLoc').on('click', function(){
+        $('#locationInfo').slideUp();
+        $('#locationInfo').removeClass('locOpen');
+        $('#locationInfo').addClass('locClose');
+      });
 
+      $('#openLoc').on('click',function(){
+        $('#locationInfo').removeClass('locClose');
+        $('#locationInfo').addClass('locOpen');
+      });
 
       map.addListener('idle', function(e) {
         deleteMarkers();  // clears map
@@ -76,7 +83,6 @@ function initMap() {
           markerClusterer.clearMarkers();
         }
         getPhotoData(map.getBounds());
-
       });
       infoWindow = new google.maps.InfoWindow({disableAutoPan : true});
       markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 5})
@@ -90,16 +96,6 @@ function initMap() {
     handleLocationError(false, errorWindow, map.getCenter());
   }
 }
-  $('#closeLoc').on('click', function(){
-    $('#locationInfo').slideUp();
-    $('#locationInfo').removeClass('locOpen');
-    $('#locationInfo').addClass('locClose');
-  });
-
-  $('#openLoc').on('click',function(){
-    $('#locationInfo').removeClass('locClose');
-    $('#locationInfo').addClass('locOpen');
-    });
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -135,6 +131,8 @@ var addMarkers = function(results) {
       $('#locationInfo').removeClass('locClose');
       $('#locationInfo').addClass('locOpen');
     });
+
+
     markers.push(marker);
     setInfoWindowContent(marker, imgHTML)
   });
@@ -144,7 +142,6 @@ var addMarkers = function(results) {
 var setInfoWindowContent = function(marker, content) {
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.setContent(content);
-    //$('#show-data').append(content);
     infoWindow.open(map, marker);
   });
 };
