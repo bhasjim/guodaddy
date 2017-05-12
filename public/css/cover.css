@@ -18,12 +18,14 @@ body {
   color: #1DCDA4;
   font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
-.navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-brand:focus,
-.navbar-custom .navbar-brand:active,
-.navbar-custom .navbar-brand.active {
+.navbar-custom .navbar-brand:hover {
   color: #17a080;
 }
+.navbar-custom .navbar-brand:focus {
+  color: #1DCDA4;
+}
+
+
 .navbar-custom .navbar-collapse {
   border-color: rgba(255, 255, 255, 0.02);
 }
@@ -35,8 +37,7 @@ body {
   color: white;
   font-size: 12px;
 }
-.navbar-custom .navbar-toggle:hover,
-.navbar-custom .navbar-toggle:focus {
+.navbar-custom .navbar-toggle:hover {
   background-color: #1DCDA4;
 }
 .navbar-custom .nav li a {
@@ -46,10 +47,12 @@ body {
   letter-spacing: 1px;
   color: white;
 }
-.navbar-custom .nav li a:hover,
-.navbar-custom .nav li a:focus {
+.navbar-custom .nav li a:hover {
   color: #1DCDA4;
   outline: none;
+}
+.navbar-custom .nav li a:focus {
+  color:white;
 }
 .navbar-custom .navbar-nav > .active > a {
   border-radius: 0;
@@ -160,4 +163,8 @@ header .intro-text .slogan-heading {
   color: white;
   background-color: #17a080;
   border-color: #159779;
+}
+
+.btn-xl:focus{
+  color:white;
 }
