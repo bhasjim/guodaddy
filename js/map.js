@@ -69,16 +69,7 @@ function initMap() {
         $('#locationInfo').slideDown();
       });
 
-      $('#closeLoc').on('click', function(){
-        $('#locationInfo').slideUp();
-        $('#locationInfo').removeClass('locOpen');
-        $('#locationInfo').addClass('locClose');
-      });
-
-      $('#openLoc').on('click',function(){
-        $('#locationInfo').removeClass('locClose');
-        $('#locationInfo').addClass('locOpen');
-      });
+      
 
 
       map.addListener('idle', function(e) {
@@ -100,6 +91,16 @@ function initMap() {
     handleLocationError(false, errorWindow, map.getCenter());
   }
 }
+  $('#closeLoc').on('click', function(){
+    $('#locationInfo').slideUp();
+    $('#locationInfo').removeClass('locOpen');
+    $('#locationInfo').addClass('locClose');
+  });
+
+  $('#openLoc').on('click',function(){
+    $('#locationInfo').removeClass('locClose');
+    $('#locationInfo').addClass('locOpen');
+    });
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -144,6 +145,7 @@ var addMarkers = function(results) {
 var setInfoWindowContent = function(marker, content) {
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.setContent(content);
+    //$('#show-data').append(content);
     infoWindow.open(map, marker);
   });
 };
