@@ -9,16 +9,19 @@ html,body{
 	position: fixed;
 	width:100%;
 	bottom:0px;
-	background-color: #3abde8;
 	display: none;
 	text-align:center;
+	background-color: rgba(0, 153, 255, .7);
+
 	/*background-image: url("../images/ucsd.jpeg");
 	background-repeat: no-repeat;
 	background-size :100%;*/
-
 }
-#locationName{
+
+
+#locationTitle{
 	font-size:4em;
+	opacity:1;
 }
 
 .locOpen{
@@ -44,9 +47,9 @@ html,body{
 	color:white;
 	margin:auto;
 	cursor:pointer;
-}	
+}
 #openLoc:hover{
-	background-color: #39b7f9;
+	background-color: rgb(0, 92, 153);
 }
 @keyframes slideUp{
 	0% {height:20vh;}

@@ -80,16 +80,12 @@ function initMap() {
         $('#locationInfo').addClass('locOpen');
       });
 
-<<<<<<< HEAD
+
       map.addListener('idle', function(e) {
         deleteMarkers();
-=======
-      map.addListener('bounds_changed', function(e) {
-        deleteMarkers();  // clears map
-        if (markerClusterer) {    // clears clusters
-          markerClusterer.clearMarkers();
-        }
->>>>>>> 72a0f8b61f74b73142e96c6195873fe00cedbf16
+        // if (markerClusterer) {    // clears clusters
+        //   markerClusterer.clearMarkers();
+        // }
         getPhotoData(map.getBounds());
       });
       infoWindow = new google.maps.InfoWindow();
