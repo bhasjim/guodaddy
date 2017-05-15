@@ -67,7 +67,7 @@ function initMap() {
         $('#locationInfo').slideDown();
       });
 
-      
+
 
 
       map.addListener('idle', function(e) {
@@ -117,7 +117,7 @@ var addMarkers = function(results) {
       null, // origin
       new google.maps.Point( 0, 0 ), // anchor (move to center of marker)
       new google.maps.Size( 20, 20 )); // scaled size (required for Retina display icon)
-    imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_m.jpg' + " alt=" + photo.title + "/>";
+    imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_c.jpg' + " alt=" + photo.title + "/>";
     photoLocation = new google.maps.LatLng(photo.latitude, photo.longitude);
     marker = new google.maps.Marker({icon:fireImage,position: photoLocation,map:map});
 
