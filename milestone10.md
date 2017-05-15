@@ -1,4 +1,4 @@
-  We've all experienced being stuck trying to find a place to go or something to do. Our app, Exposure, gives people a source of inspiration that will motivate them to go out and explore the world around them. Whether it be to sightsee, find a new hiking trail, or take pictures, our app does it all.
+  We've all experienced being stuck trying to find a place to go or something to do. Our app, Exposure, gives people a source of inspiration that will motivate them to go out and explore the world around them. Whether it is to sightsee, find a new hiking trail, or take pictures, our app does it all.
   
 Currently, the only way to find interesting spots around you are Yelp or Tripadvisor, and both do not really have an instant way to view photos. There is also Instagram, but like the other two, it does not have a map view to instantly view the photos and where these photos were taken. As a result, there is no real leading application that allows users to view photos based on the photo's location.
 
