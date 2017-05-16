@@ -64,7 +64,7 @@ function initMap() {
       });
 
       locMarker.addListener('click', function() {
-        $('#locationInfo').slideDown();
+        // $('#locationInfo').slideDown();
       });
 
       
@@ -90,16 +90,16 @@ function initMap() {
     handleLocationError(false, errorWindow, map.getCenter());
   }
 }
-  $('#closeLoc').on('click', function(){
-    $('#locationInfo').slideUp();
-    $('#locationInfo').removeClass('locOpen');
-    $('#locationInfo').addClass('locClose');
-  });
+  // $('#closeLoc').on('click', function(){
+  //   $('#locationInfo').slideUp();
+  //   $('#locationInfo').removeClass('locOpen');
+  //   $('#locationInfo').addClass('locClose');
+  // });
 
-  $('#openLoc').on('click',function(){
-    $('#locationInfo').removeClass('locClose');
-    $('#locationInfo').addClass('locOpen');
-    });
+  // $('#openLoc').on('click',function(){
+  //   $('#locationInfo').removeClass('locClose');
+  //   $('#locationInfo').addClass('locOpen');
+  //   });
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -117,26 +117,27 @@ var addMarkers = function(results) {
       null, // origin
       new google.maps.Point( 0, 0 ), // anchor (move to center of marker)
       new google.maps.Size( 20, 20 )); // scaled size (required for Retina display icon)
-    imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_m.jpg' + " alt=" + photo.title + "/>";
+    imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_z.jpg' + " alt=" + photo.title + "/>";
     photoLocation = new google.maps.LatLng(photo.latitude, photo.longitude);
     marker = new google.maps.Marker({icon:fireImage,position: photoLocation,map:map});
 
     marker.addListener('click', function() {
-      $('#locationInfo').slideDown();
+      // $('#locationInfo').slideDown();
+      $('#photoModal').modal('show');
     });
 
-    $('#closeLoc').on('click', function(){
-      $('#locationInfo').slideUp();
-      $('#locationInfo').removeClass('locOpen');
-      $('#locationInfo').addClass('locClose');
-      $('#show-data').hide();
-    });
+    // $('#closeLoc').on('click', function(){
+    //   $('#locationInfo').slideUp();
+    //   $('#locationInfo').removeClass('locOpen');
+    //   $('#locationInfo').addClass('locClose');
+    //   $('#show-data').hide();
+    // });
 
-    $('#openLoc').on('click',function(){
-      $('#locationInfo').removeClass('locClose');
-      $('#locationInfo').addClass('locOpen');
-      $('#show-data').show();
-    });
+    // $('#openLoc').on('click',function(){
+    //   $('#locationInfo').removeClass('locClose');
+    //   $('#locationInfo').addClass('locOpen');
+    //   $('#show-data').show();
+    // });
     markers.push(marker);
     setInfoWindowContent(marker, imgHTML)
   });
