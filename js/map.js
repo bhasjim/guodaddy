@@ -9,13 +9,14 @@ var apiParams = { //parameters for API calls
   "bbox": [-117.285576,32.805377,-117.185326,32.896597]
 }
 var markers = [];
-
-var getPhotoData = function(bounds) {
-      console.log(bounds.getSouthWest().toString());
-      var params = {
+var params = {
         format: "json",
         apiKey: "4cd3d05ce08d3d4fa414116b3e3c247e"
       }
+
+var getPhotoData = function(bounds) {
+      console.log(bounds.getSouthWest().toString());
+      
       var bbox = bounds.toJSON();
       var bboxString = bounds.toString().replace(/\(/g,"");
       var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
@@ -139,19 +140,39 @@ var addMarkers = function(results) {
     //   $('#show-data').show();
     // });
     markers.push(marker);
-    setInfoWindowContent(marker, imgHTML)
+    setInfoWindowContent(marker, imgHTML, results)
   });
   markerClusterer.addMarkers(markers);
 };
 
-var setInfoWindowContent = function(marker, content) {
+var setInfoWindowContent = function(marker, content,results) {
   google.maps.event.addListener(marker, 'click', function() {
     //infoWindow.setContent(content);
-    $('#show-data').empty();
-    $('#show-data').append(content);
+    $('#main-pic').empty();
+    $('#gallery-pic').empty();
+    $('#main-pic').append(content);
+    console.log(marker.internalPosition.lat());
+
+    nearbyPictures(marker, results);
     //infoWindow.open(map, marker);
   });
 };
+
+function nearbyPictures(marker, photos){
+  var lat = marker.internalPosition.lat();
+  var lon = marker.internalPosition.lng();
+  const mbbox = (lon - 0.0005) + "," + (lat - 0.0005) + "," + (lon + 0.0005) + "," + (lat + 0.0005) 
+  var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
+        apiParams.key + "&bbox=" + mbbox + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
+  $.getJSON(url, params, function(data) {
+    $.each(data.photos.photo, function(i, photo) {
+      imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
+      $('#gallery-pic').append(imgHTML);
+    });
+
+  });
+
+}
 
 var deleteMarkers = function() {
   for (i = 0; i < markers.length; i += 1) {
