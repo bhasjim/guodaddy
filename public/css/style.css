@@ -6,7 +6,7 @@ html,body{
 
 
 #locationInfo{
-	position: fixed;
+	position: absolute;
 	width:100%;
 	bottom:0px;
 	display: none;
@@ -62,6 +62,12 @@ html,body{
     padding: 20px;
 }
 #show-data{
-	display:none;
-	padding-bottom: 20px;
+	padding: 30px 0px 30px 0px;
+
 }
+.center{
+	text-align:center;
+}
+
+.photo-header{
+	padding:15px;
