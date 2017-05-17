@@ -113,14 +113,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 var addMarkers = function(results) {
   var photoLocation, marker, imgHTML;
   $.each(results.photo, function(i, photo) {
-    var fireImage = new google.maps.MarkerImage('./../images/fire.png',
+    var shutterImage = new google.maps.MarkerImage('./../images/shutter.png',
       null, // size
       null, // origin
       new google.maps.Point( 0, 0 ), // anchor (move to center of marker)
-      new google.maps.Size( 20, 20 )); // scaled size (required for Retina display icon)
+      new google.maps.Size( 30, 30 )); // scaled size (required for Retina display icon)
     imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_z.jpg' + " alt=" + photo.title + "/>";
     photoLocation = new google.maps.LatLng(photo.latitude, photo.longitude);
-    marker = new google.maps.Marker({icon:fireImage,position: photoLocation,map:map});
+    marker = new google.maps.Marker({icon:shutterImage,position: photoLocation,map:map});
 
     marker.addListener('click', function() {
       // $('#locationInfo').slideDown();
