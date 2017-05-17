@@ -80,7 +80,7 @@ function initMap() {
 
       });
       infoWindow = new google.maps.InfoWindow({disableAutoPan : true});
-      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 5})
+      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 5, maxZoom: 10})
 
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
