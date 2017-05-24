@@ -80,3 +80,6 @@ html,body{
 	opacity:0.75;
 	cursor:pointer;
 }
+#main-pic-header{
+	display:inline-block;
+}
