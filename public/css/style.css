@@ -71,3 +71,12 @@ html,body{
 
 .photo-header{
 	padding:15px;
+}
+.grid-pic{
+	margin:4px;
+
+}
+.grid-pic:hover{
+	opacity:0.75;
+	cursor:pointer;
+}

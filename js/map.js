@@ -201,13 +201,20 @@ function nearbyPictures(marker, photos){
         apiParams.key + "&bbox=" + mbbox + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
     $.each(data.photos.photo, function(i, photo) {
-      imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
+      imgHTML = "<img class='grid-pic' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
       $('#gallery-pic').append(imgHTML);
     });
 
   });
 
 }
+
+$(document).on('click', '.grid-pic',function(){
+  $('#main-pic').empty();
+  source = $(this)[0].src;
+  source = source.substring(0, source.length - 5)
+  $('#main-pic').append("<img src='" + source + "z.jpg' />");
+});
 
 var deleteMarkers = function() {
   for (i = 0; i < markers.length; i += 1) {
