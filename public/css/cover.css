@@ -222,6 +222,12 @@ header .intro-text .slogan-heading {
   padding: 5px 11px 3px 13px;
 }
 
+.dropdown-menu{
+  margin-right:30px;
+
+  padding-right: 50px;
+}
+
 .imag {
   margin: 5px;
 }
