@@ -80,7 +80,7 @@ function initMap() {
 
       });
       infoWindow = new google.maps.InfoWindow({disableAutoPan : true});
-      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 5, maxZoom: 10})
+      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 6, maxZoom: 20})
 
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
@@ -149,14 +149,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 var addMarkers = function(results) {
   var photoLocation, marker, imgHTML;
   $.each(results.photo, function(i, photo) {
-    var shutterImage = new google.maps.MarkerImage('./../images/shutter.png',
+    var photoMarker = new google.maps.MarkerImage('./../images/cameralol.png',
       null, // size
       null, // origin
       new google.maps.Point( 0, 0 ), // anchor (move to center of marker)
       new google.maps.Size( 30, 30 )); // scaled size (required for Retina display icon)
     imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_z.jpg' + " alt=" + photo.title + "/>";
     photoLocation = new google.maps.LatLng(photo.latitude, photo.longitude);
-    marker = new google.maps.Marker({icon:shutterImage,position: photoLocation,map:map});
+    marker = new google.maps.Marker({icon:photoMarker,position: photoLocation,map:map});
 
     marker.addListener('click', function() {
       // $('#locationInfo').slideDown();
