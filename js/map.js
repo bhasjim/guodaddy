@@ -348,7 +348,7 @@ var addMarkers = function(results) {
       null, // origin
       new google.maps.Point( 0, 0 ), // anchor (move to center of marker)
       new google.maps.Size( 20, 20 )); // scaled size (required for Retina display icon)
-    imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_z.jpg' + " alt=" + photo.title + "/>";
+    imgHTML = "<img data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_z.jpg' + " alt=" + photo.title + "/>";
     photoLocation = new google.maps.LatLng(photo.latitude, photo.longitude);
     marker = new google.maps.Marker({icon:photoMarker,position: photoLocation,map:map});
 
@@ -370,16 +370,18 @@ var addMarkers = function(results) {
     //   $('#show-data').show();
     // });
     markers.push(marker);
-    setInfoWindowContent(marker, imgHTML, results)
+    setInfoWindowContent(marker, imgHTML, results, photo.title)
   });
   markerClusterer.addMarkers(markers);
 };
 
-var setInfoWindowContent = function(marker, content,results) {
+var setInfoWindowContent = function(marker, content,results, title) {
   google.maps.event.addListener(marker, 'click', function() {
     //infoWindow.setContent(content);
+    $('#main-pic-header').empty()
     $('#main-pic').empty();
     $('#gallery-pic').empty();
+    $('#main-pic-header').append(title);
     $('#main-pic').append(content);
     console.log(marker.internalPosition.lat());
 
@@ -396,7 +398,7 @@ function nearbyPictures(marker, photos){
         apiParams.key + "&bbox=" + mbbox + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
     $.each(data.photos.photo, function(i, photo) {
-      imgHTML = "<img class=\"imag\" src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
+      imgHTML = "<img class=\"grid-pic\" data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
       $('#gallery-pic').append(imgHTML);
     });
 
@@ -405,7 +407,9 @@ function nearbyPictures(marker, photos){
 }
 
 $(document).on('click', '.grid-pic',function(){
+  $('#main-pic-header').empty();
   $('#main-pic').empty();
+  $('#main-pic-header').append($(this).data('title'));
   source = $(this)[0].src;
   source = source.substring(0, source.length - 5)
   $('#main-pic').append("<img src='" + source + "z.jpg' />");
