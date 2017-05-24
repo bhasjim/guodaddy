@@ -7,3 +7,5 @@ Implemented functionality to the nearby pictures that allows the users to view t
 # Bahari Hasjim
 Finally got around to adding a user interface for adding and removing tags that will be used in the future to filter pictures.
 
+# David Moll
+Created a new homepage that keeps the map front and center. Began implementing the back end to filter photos based on tags and limit pictures to an inputted amount. Adjusted the marker clusterer settings.
