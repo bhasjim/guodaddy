@@ -4,3 +4,6 @@ Took in TA suggestion to make top header smaller and got rid of redundant featur
 # Julian Joshua Komala
 Implemented functionality to the nearby pictures that allows the users to view them as the main picture as suggested by peers. Also added the titles of the pictures onto the modal.
 
+# Bahari Hasjim
+Finally got around to adding a user interface for adding and removing tags that will be used in the future to filter pictures.
+
