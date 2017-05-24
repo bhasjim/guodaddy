@@ -22,7 +22,7 @@ var getPhotoData = function(bounds) {
       var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
       console.log("hey: " + bboxString);
       var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
-        apiParams.key + "&bbox=" + bboxString + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
+        apiParams.key + "&bbox=" + bboxString + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
       $.getJSON(url, params, function(data) {
         addMarkers(data.photos);
       });
@@ -80,11 +80,12 @@ function initMap() {
 
       });
       infoWindow = new google.maps.InfoWindow({disableAutoPan : true});
-      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 5})
+      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 6, maxZoom: 20})
 
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
       // Bias the SearchBox results towards current map's viewport.
       map.addListener('bounds_changed', function() {
@@ -148,14 +149,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 var addMarkers = function(results) {
   var photoLocation, marker, imgHTML;
   $.each(results.photo, function(i, photo) {
-    var shutterImage = new google.maps.MarkerImage('./../images/shutter.png',
+    var photoMarker = new google.maps.MarkerImage('./../images/cameralol.png',
       null, // size
       null, // origin
       new google.maps.Point( 0, 0 ), // anchor (move to center of marker)
       new google.maps.Size( 30, 30 )); // scaled size (required for Retina display icon)
     imgHTML = "<img src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_z.jpg' + " alt=" + photo.title + "/>";
     photoLocation = new google.maps.LatLng(photo.latitude, photo.longitude);
-    marker = new google.maps.Marker({icon:shutterImage,position: photoLocation,map:map});
+    marker = new google.maps.Marker({icon:photoMarker,position: photoLocation,map:map});
 
     marker.addListener('click', function() {
       // $('#locationInfo').slideDown();
@@ -201,7 +202,7 @@ function nearbyPictures(marker, photos){
         apiParams.key + "&bbox=" + mbbox + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
     $.each(data.photos.photo, function(i, photo) {
-      imgHTML = "<img class='grid-pic' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
+      imgHTML = "<img class=\"imag\" src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
       $('#gallery-pic').append(imgHTML);
     });
 
