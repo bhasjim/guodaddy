@@ -265,7 +265,6 @@ function initMap() {
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
 
-      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
 //       // Create the DIV to hold the control and call the CenterControl()
 // // constructor passing in this DIV.

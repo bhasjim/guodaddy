@@ -44,7 +44,6 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Map<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">About</a></li>
                 </li>
               </ul>
               <form class="navbar-form navbar-right">
@@ -69,7 +68,7 @@
                 </div>
               <div id="show-data">
                 <div id="main-pic" class="center">
-                  
+
                 </div>
                 <hr>
                 <div id="gallery-pic" class="center">
@@ -80,23 +79,22 @@
         </div>
 
     <div class="container col-sm-3">
+
         <div class="form-group">
-              <label for="tags">Add Tags:</label>
-              <input type="text" class="form-control" id="tags">
-        </div>
-        <div>
-            <ul class="list-group">
-              <li class="list-group-item">Tag 1</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-            </ul>
+              <label for="pac-input">Search Location:</label>
+              <input id="pac-input" class="form-control" type="text" placeholder="Search anywhere">
+              <br></br>
+              <br></br>
+
+              <label for="tag-input">Search Tags:</label>
+              <input type="text" id="tag-input" class="form-control" placeholder="Add tags" >
+
         </div>
     </div>
 
 
     <section id="Map">
       <div class="container col-sm-9">
-            <input id="pac-input" class="controls" type="text" placeholder="Search anywhere">
             <div id="map"></div>
       </div>
     </section>
