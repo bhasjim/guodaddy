@@ -210,6 +210,13 @@ function nearbyPictures(marker, photos){
 
 }
 
+$(document).on('click', '.grid-pic',function(){
+  $('#main-pic').empty();
+  source = $(this)[0].src;
+  source = source.substring(0, source.length - 5)
+  $('#main-pic').append("<img src='" + source + "z.jpg' />");
+});
+
 var deleteMarkers = function() {
   for (i = 0; i < markers.length; i += 1) {
     markers[i].setMap(null);
