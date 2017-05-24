@@ -1,2 +1,6 @@
 # Justine Lin
 Took in TA suggestion to make top header smaller and got rid of redundant features. Also cleaned up useless sections of the page. I also changed the way the map looks to make our markers stand out more.
+
+# Julian Joshua Komala
+Implemented functionality to the nearby pictures that allows the users to view them as the main picture as suggested by peers. Also added the titles of the pictures onto the modal.
+
