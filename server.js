@@ -24,7 +24,6 @@ app.get("/",function(req,res){
 app.get("/about",function(req,res){
   res.sendFile(filePath + "about.html");
 });
-
 app.get("/json",function(req,res){
   res.sendFile(filePath + "jsonTest.html");
 });
