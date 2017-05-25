@@ -259,7 +259,7 @@ function initMap() {
 
       });
       infoWindow = new google.maps.InfoWindow({disableAutoPan : true});
-      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 2, maxZoom: 20})
+      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 4, maxZoom: 20})
 
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
