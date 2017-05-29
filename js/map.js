@@ -367,22 +367,22 @@ var addMarkers = function(results) {
     //   $('#locationInfo').removeClass('locClose');
     //   $('#locationInfo').addClass('locOpen');
     //   $('#show-data').show();
-    // });
+    // });w
     markers.push(marker);
-    setInfoWindowContent(marker, imgHTML, results, photo.title)
+    setInfoWindowContent(marker, imgHTML, results, photo)
   });
   markerClusterer.addMarkers(markers);
 };
 
-var setInfoWindowContent = function(marker, content,results, title) {
+var setInfoWindowContent = function(marker, content,results, photo) {
   google.maps.event.addListener(marker, 'click', function() {
     //infoWindow.setContent(content);
     $('#main-pic-header').empty()
     $('#main-pic').empty();
     $('#gallery-pic').empty();
-    $('#main-pic-header').append(title);
+    $('#main-pic-header').append(photo.title);
     $('#main-pic').append(content);
-    console.log(marker.internalPosition.lat());
+    console.log(photo);
 
     nearbyPictures(marker, results);
     //infoWindow.open(map, marker);

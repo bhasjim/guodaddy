@@ -80,6 +80,13 @@ html,body{
 	opacity:0.75;
 	cursor:pointer;
 }
+
+
+#pic-info{
+	width:640px;
+	margin:auto;
+}
+
 #main-pic-header{
 	display:inline-block;
 }
