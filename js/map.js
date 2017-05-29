@@ -412,6 +412,7 @@ $(document).on('click', '.grid-pic',function(){
   source = $(this)[0].src;
   source = source.substring(0, source.length - 5)
   $('#main-pic').append("<img src='" + source + "z.jpg' />");
+  $('#photoModal').scrollTop(0);
 });
 
 var deleteMarkers = function() {
