@@ -4,11 +4,15 @@ var infoWindow;
 var markerClusterer = null;
 var chicago = {lat: 41.85, lng: -87.65};
 
+//add listener and loop through tags to add to url
+console.log($("#tagsearch").tagsinput('items').itemsArray[1]);
+
 
 var apiParams = { //parameters for API calls
   "key": "65030e1f766ba9dccb6deb836165ca4a",
   "max_upload_date": "1493856000",
-  "bbox": [-117.285576,32.805377,-117.185326,32.896597]
+  "bbox": [-117.285576,32.805377,-117.185326,32.896597],
+  "tags":["dog","cat"]
 }
 var markers = [];
 var params = {
@@ -24,15 +28,15 @@ var getPhotoData = function(bounds) {
       var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
       console.log("hey: " + bboxString);
       var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
-        apiParams.key + "&bbox=" + bboxString + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
+        apiParams.key + "&bbox=" + bboxString + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
       $.getJSON(url, params, function(data) {
         addMarkers(data.photos);
       });
     };
 
-
 var map, errorWindow;
 function initMap() {
+
   var image = new google.maps.MarkerImage(
               './../images/bluedot_retina.png',
               null, // size
