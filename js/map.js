@@ -30,9 +30,9 @@ var getPhotoData = function(bounds) {
       });
     };
 
-
 var map, errorWindow;
 function initMap() {
+
   var image = new google.maps.MarkerImage(
               './../images/bluedot_retina.png',
               null, // size
