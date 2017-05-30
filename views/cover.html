@@ -88,9 +88,8 @@
               <input id="pac-input" class="form-control" type="text" placeholder="Search anywhere">
               <br></br>
 
-              <label for="tag-input">Tags:</label>
-              <input id="inputmagic"></div>
-
+              <label for="tagsearch" class="control-label">Add Tags:</label>
+              <input id="tagsearch" type="text" value="swag,hello,hey,cool" class="form-control" data-role="tagsinput">
 
         </div>
     </div>
@@ -110,9 +109,8 @@
     ================================================== -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/bootstrap.min.js"></script>
-
-    <link href="/assets/magicsuggest/magicsuggest-min.css" rel="stylesheet">
-    <script src="/assets/magicsuggest/magicsuggest-min.js"></script>
+    <link href="/assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+    <script src="/assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.js"></script>
 
     <!-- Placed at the end of the document so the pages load faster -->
 
@@ -128,6 +126,11 @@
     <script type="text/javascript" src="/markerclusterer.js"></script>
     <script src="/navBar.js"></script>
     <script src="/map.js"></script>
+
+    <script>
+    console.log($("#tagsearch").tagsinput('items').itemsArray[1]);
+    </script>
+
 
   </body>
 </html>
