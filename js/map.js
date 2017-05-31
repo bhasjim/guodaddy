@@ -307,6 +307,32 @@ function initMap() {
         searchBox.setBounds(map.getBounds());
       });
 
+
+      google.maps.event.addListener(markerClusterer, 'clusterclick', function(cluster) {
+          var center = cluster.getCenter();
+          var lat = center.lat();
+          var lng = center.lng()
+          $('#photoModal').modal('show');
+          $('#main-pic-header').empty()
+          $('#main-pic').empty();
+          $('#gallery-pic').empty();
+
+          var base = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
+          var query = base + lat.toString() + "," + lng.toString();
+          $.getJSON(query, params, function(data) {
+            if (data) {
+              var title = data.results[2].formatted_address;
+              $('#main-pic-header').append(title);
+            }
+            else {
+              console.log("geocoding failed");
+            }
+          });      
+          //$('#main-pic').append(content);
+          nearbyPictures(lat, lng);
+      });
+
+
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
       searchBox.addListener('places_changed', function() {
@@ -406,24 +432,25 @@ var setInfoWindowContent = function(marker, content,results, photo) {
     $('#main-pic-header').append(photo.title);
     $('#main-pic').append(content);
     console.log(photo);
+    var lat = marker.internalPosition.lat();
+    var lon = marker.internalPosition.lng();
 
-    nearbyPictures(marker, results);
+    nearbyPictures(lat, lon);
     //infoWindow.open(map, marker);
   });
 };
 
-function nearbyPictures(marker, photos){
-  var lat = marker.internalPosition.lat();
-  var lon = marker.internalPosition.lng();
+function nearbyPictures(lat, lon){
   const mbbox = (lon - 0.0005) + "," + (lat - 0.0005) + "," + (lon + 0.0005) + "," + (lat + 0.0005)
   var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
         apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
-    $.each(data.photos.photo, function(i, photo) {
-      imgHTML = "<img class=\"grid-pic\" data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
-      $('#gallery-pic').append(imgHTML);
-    });
-
+    if (data.photos.photo.length > 1) {
+      $.each(data.photos.photo, function(i, photo) {
+        imgHTML = "<img class=\"grid-pic\" data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
+        $('#gallery-pic').append(imgHTML);
+      });
+    }
   });
 
 }

@@ -81,6 +81,9 @@ html,body{
 	cursor:pointer;
 }
 
+#main-pic img{
+	max-width:640px;
+}
 
 #pic-info{
 	width:640px;
