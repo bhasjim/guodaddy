@@ -68,7 +68,6 @@ var getPhotoData = function(bounds) {
     };
 
 function initMap() {
-
   var image = new google.maps.MarkerImage(
               './../images/bluedot_retina.png',
               null, // size
@@ -348,7 +347,7 @@ map.controls[google.maps.ControlPosition.RIGHT_TOP].push(dropdownDiv);
       });
 
     }, function() {
-      handleLocationError(true, errorWindow, map.getCenter());
+        handleLocationError(true, errorWindow, map.getCenter());
     });
 
   } else {
@@ -356,6 +355,8 @@ map.controls[google.maps.ControlPosition.RIGHT_TOP].push(dropdownDiv);
     handleLocationError(false, errorWindow, map.getCenter());
   }
 }
+
+
   // $('#closeLoc').on('click', function(){
   //   $('#locationInfo').slideUp();
   //   $('#locationInfo').removeClass('locOpen');
