@@ -22,7 +22,7 @@ var params = {
 
 
 //add listener and loop through tags to add to url
-$('input').on('itemAdded', function(event) {
+$('#tagsearch').on('itemAdded', function(event) {
   // event.item: contains the item
   //push tag to array of tags
   apiParams.tags.push(event.item);
@@ -36,7 +36,7 @@ $('input').on('itemAdded', function(event) {
 });
 
 
-$('input').on('itemRemoved', function(event) {
+$('#tagsearch').on('itemRemoved', function(event) {
   // event.item: contains the item
   //remove tag from array of tags
   //get index of the item and remove it
@@ -53,6 +53,13 @@ $('input').on('itemRemoved', function(event) {
     getPhotoData(map.getBounds());
   }
 });
+
+$('input').tagsinput({
+  trimValue: true,
+  confirmKeys: [13]
+
+});
+
 
 var getPhotoData = function(bounds) {
       console.log(bounds.getSouthWest().toString());
@@ -300,6 +307,8 @@ function initMap() {
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
 
 
       // Bias the SearchBox results towards current map's viewport.
@@ -327,7 +336,7 @@ function initMap() {
             else {
               console.log("geocoding failed");
             }
-          });      
+          });
           //$('#main-pic').append(content);
           nearbyPictures(lat, lng);
       });
