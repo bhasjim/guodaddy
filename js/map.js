@@ -228,6 +228,7 @@ function initMap() {
 
       google.maps.event.addListener(markerClusterer, 'clusterclick', function(cluster) {
           var center = cluster.getCenter();
+          var marks = cluster.getMarkers();
           var lat = center.lat();
           var lng = center.lng()
           $('#photoModal').modal('show');
@@ -246,8 +247,22 @@ function initMap() {
               console.log("geocoding failed");
             }
           });
+
+          // loop through markers find max radius
+          var max_rad = 0.0;
+          console.log(marks);
+          $.each(marks, function(i, mark) {
+            console.log(mark);
+            var distance =  Math.sqrt(
+                            Math.pow((lat - mark.position.lat()), 2) +
+                            Math.pow((lng - mark.position.lng()), 2));
+            if (max_rad < distance) {
+              max_rad = distance;
+            }
+          });
+
           //$('#main-pic').append(content);
-          nearbyPictures(lat, lng);
+          nearbyPictures(lat, lng, max_rad);
       });
 
 
@@ -353,14 +368,19 @@ var setInfoWindowContent = function(marker, content,results, photo) {
     var lat = marker.internalPosition.lat();
     var lon = marker.internalPosition.lng();
 
-    nearbyPictures(lat, lon);
+    nearbyPictures(lat, lon, null);
     //infoWindow.open(map, marker);
   });
 };
 
-function nearbyPictures(lat, lon){
-  rad = (24-map.zoom) * 0.0001;
-  const mbbox = (lon - rad) + "," + (lat - rad) + "," + (lon + rad) + "," + (lat + 0.0005)
+function nearbyPictures(lat, lon, radius){
+  if (radius) {
+    console.log(radius);
+    rad = radius;
+  } else { 
+    rad = (24-map.zoom) * 0.0001; 
+  }
+  const mbbox = (lon - rad) + "," + (lat - rad) + "," + (lon + rad) + "," + (lat + rad);
   var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
         apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
