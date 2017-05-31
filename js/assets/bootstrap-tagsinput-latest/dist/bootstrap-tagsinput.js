@@ -62,7 +62,6 @@
     add: function(item, dontPushVal, options) {
       var self = this;
 
-
       if (self.options.maxTags && self.itemsArray.length >= self.options.maxTags)
         return;
 

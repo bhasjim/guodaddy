@@ -84,11 +84,13 @@
     <div class="container col-sm-3">
 
         <div class="form-group">
-              <label for="pac-input">Location Search:</label>
-              <input id="pac-input" class="form-control" type="text" placeholder="Search anywhere">
-              <br></br>
-              <label for="tagsearch" class="control-label">Find:</label>
-              <input id="tagsearch" type="text" value="" class="form-control" data-role="tagsinput">
+          <label for="tagsearch" class="control-label">Find:</label>
+          <input id="tagsearch" class="form-control" type="text" placeholder="Dogs, tacos, beaches..." data-role="tagsinput" >
+
+          <br></br>
+          <label for="pac-input">Near:</label>
+          <input id="pac-input" class="form-control" type="text" placeholder="Paris, England, Taj Mahal...">
+
 
         </div>
     </div>
@@ -119,14 +121,9 @@
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>-->
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ3Vw5gKB89VuUhZdJr2EgqxUg5sOgAiY&libraries=places">
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ3Vw5gKB89VuUhZdJr2EgqxUg5sOgAiY&libraries=places"> </script>
     <script type="text/javascript" src="/markerclusterer.js"></script>
     <script src="/navBar.js"></script>
     <script src="/map.js"></script>
-
-
-
   </body>
 </html>
