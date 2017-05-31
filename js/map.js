@@ -3,16 +3,16 @@ var image;
 var infoWindow;
 var markerClusterer = null;
 var chicago = {lat: 41.85, lng: -87.65};
+var map, errorWindow;
 
-//add listener and loop through tags to add to url
-console.log($("#tagsearch").tagsinput('items').itemsArray[1]);
+
 
 
 var apiParams = { //parameters for API calls
   "key": "65030e1f766ba9dccb6deb836165ca4a",
   "max_upload_date": "1493856000",
   "bbox": [-117.285576,32.805377,-117.185326,32.896597],
-  "tags":["dog","cat"]
+  "tags":[]
 }
 var markers = [];
 var params = {
@@ -20,13 +20,46 @@ var params = {
         apiKey: "4cd3d05ce08d3d4fa414116b3e3c247e"
       }
 
+
+//add listener and loop through tags to add to url
+$('input').on('itemAdded', function(event) {
+  // event.item: contains the item
+  //push tag to array of tags
+  apiParams.tags.push(event.item);
+  deleteMarkers();  // clears map
+  if (markerClusterer) {    // clears clusters
+    markerClusterer.clearMarkers();
+  }
+  if(map){
+    getPhotoData(map.getBounds());
+  }
+});
+
+
+$('input').on('itemRemoved', function(event) {
+  // event.item: contains the item
+  //remove tag from array of tags
+  //get index of the item and remove it
+  var index = apiParams.tags.indexOf(event.item);
+  if (index > -1) {
+    apiParams.tags.splice(index, 1);
+  }
+  //refresh the map
+  deleteMarkers();  // clears map
+  if (markerClusterer) {    // clears clusters
+    markerClusterer.clearMarkers();
+  }
+  if(map){
+    getPhotoData(map.getBounds());
+  }
+});
+
 var getPhotoData = function(bounds) {
       console.log(bounds.getSouthWest().toString());
 
       var bbox = bounds.toJSON();
       var bboxString = bounds.toString().replace(/\(/g,"");
       var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
-      console.log("hey: " + bboxString);
       var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
         apiParams.key + "&bbox=" + bboxString + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
       $.getJSON(url, params, function(data) {
@@ -34,7 +67,6 @@ var getPhotoData = function(bounds) {
       });
     };
 
-var map, errorWindow;
 function initMap() {
 
   var image = new google.maps.MarkerImage(
