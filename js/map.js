@@ -67,6 +67,7 @@ var getPhotoData = function(bounds) {
       });
     };
 
+
 function initMap() {
   var image = new google.maps.MarkerImage(
               './../images/bluedot_retina.png',
@@ -301,20 +302,6 @@ function initMap() {
       var searchBox = new google.maps.places.SearchBox(input);
 
 
-//       // Create the DIV to hold the control and call the CenterControl()
-// // constructor passing in this DIV.
-// var centerControlDiv = document.createElement('div');
-// var centerControl = new CenterControl(centerControlDiv, map);
-//
-// centerControlDiv.index = 1;
-// map.controls[google.maps.ControlPosition.RIGHT_TOP].push(centerControlDiv);
-
-var dropdownDiv = document.getElementById("dropdown");
-
-
-// centerControlDiv.index = 1;
-map.controls[google.maps.ControlPosition.RIGHT_TOP].push(dropdownDiv);
-
       // Bias the SearchBox results towards current map's viewport.
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
@@ -347,12 +334,11 @@ map.controls[google.maps.ControlPosition.RIGHT_TOP].push(dropdownDiv);
       });
 
     }, function() {
-        handleLocationError(true, errorWindow, map.getCenter());
-    });
-
+      handleLocationError(true, errorWindow, map.getCenter());
+    })
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, errorWindow, map.getCenter());
+      handleLocationError(false, errorWindow, map.getCenter());
   }
 }
 
