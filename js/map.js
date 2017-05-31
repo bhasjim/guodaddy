@@ -3,8 +3,8 @@ var image;
 var infoWindow;
 var markerClusterer = null;
 var chicago = {lat: 41.85, lng: -87.65};
-var map;
-var errorWindow;
+var map, errorWindow;
+
 
 
 
@@ -67,8 +67,6 @@ var getPhotoData = function(bounds) {
         addMarkers(data.photos);
       });
     };
-
-
 function initMap() {
   var image = new google.maps.MarkerImage(
               './../images/bluedot_retina.png',
@@ -423,7 +421,7 @@ function nearbyPictures(marker, photos){
   var lon = marker.internalPosition.lng();
   const mbbox = (lon - 0.0005) + "," + (lat - 0.0005) + "," + (lon + 0.0005) + "," + (lat + 0.0005)
   var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
-        apiParams.key + "&bbox=" + mbbox + "&has_geo=1&extras=geo&format=json&jsoncallback=?";
+        apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
     $.each(data.photos.photo, function(i, photo) {
       imgHTML = "<img class=\"grid-pic\" data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
