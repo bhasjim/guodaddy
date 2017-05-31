@@ -359,7 +359,8 @@ var setInfoWindowContent = function(marker, content,results, photo) {
 };
 
 function nearbyPictures(lat, lon){
-  const mbbox = (lon - 0.0005) + "," + (lat - 0.0005) + "," + (lon + 0.0005) + "," + (lat + 0.0005)
+  rad = (24-map.zoom) * 0.0001;
+  const mbbox = (lon - rad) + "," + (lat - rad) + "," + (lon + rad) + "," + (lat + 0.0005)
   var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
         apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
