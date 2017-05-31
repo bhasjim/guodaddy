@@ -6,3 +6,6 @@ I implemented the feature to search for pictures by descriptors (aka Tag feature
 
 # Justine Lin
 Made some final UI changes. Polished up some of the code as well.
+
+# Julian Joshua Komala
+Fixed some small bugs such as page not scrolling up after clicking picture on a nearby picture. I limited the size of the main picture so that it wouldnt extend the pop up. Also implemented the tag search feature to nearby pictures. 
