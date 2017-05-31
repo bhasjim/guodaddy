@@ -321,6 +321,26 @@ map.controls[google.maps.ControlPosition.RIGHT_TOP].push(dropdownDiv);
         searchBox.setBounds(map.getBounds());
       });
 
+
+      google.maps.event.addListener(markerClusterer, 'clusterclick', function(cluster) {
+          var markrs = cluster.getCenter();
+          console.log(markrs);
+          console.log(bounds.getSouthWest().toString());
+
+          var bbox = bounds.toJSON();
+          var bboxString = bounds.toString().replace(/\(/g,"");
+          var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
+          console.log("hey: " + bboxString);
+          var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
+            apiParams.key + "&bbox=" + bboxString + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
+          glob_url = url;
+          $.getJSON(url, params, function(data) {
+            addMarkers(data.photos);
+          });
+          nearbyPictures(marker, results);
+      });
+
+
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
       searchBox.addListener('places_changed', function() {
