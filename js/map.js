@@ -338,6 +338,9 @@ map.controls[google.maps.ControlPosition.RIGHT_TOP].push(dropdownDiv);
               var title = data.results[2].formatted_address;
               $('#main-pic-header').append(title);
             }
+            else {
+              console.log("geocoding failed");
+            }
           });      
           //$('#main-pic').append(content);
           nearbyPictures(lat, lng);
@@ -455,11 +458,12 @@ function nearbyPictures(lat, lon){
   var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
         apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
-    $.each(data.photos.photo, function(i, photo) {
-      imgHTML = "<img class=\"grid-pic\" data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
-      $('#gallery-pic').append(imgHTML);
-    });
-
+    if (data.photos.photo.length > 1) {
+      $.each(data.photos.photo, function(i, photo) {
+        imgHTML = "<img class=\"grid-pic\" data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
+        $('#gallery-pic').append(imgHTML);
+      });
+    }
   });
 
 }
