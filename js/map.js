@@ -333,11 +333,12 @@ map.controls[google.maps.ControlPosition.RIGHT_TOP].push(dropdownDiv);
 
           var base = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
           var query = base + lat.toString() + "," + lng.toString();
-          var title = "Flickr Pictures";  // default 
           $.getJSON(query, params, function(data) {
-            console.log(data.results);
+            if (data) {
+              var title = data.results[2].formatted_address;
+              $('#main-pic-header').append(title);
+            }
           });      
-          $('#main-pic-header').append(title);
           //$('#main-pic').append(content);
           nearbyPictures(lat, lng);
       });
