@@ -323,21 +323,23 @@ map.controls[google.maps.ControlPosition.RIGHT_TOP].push(dropdownDiv);
 
 
       google.maps.event.addListener(markerClusterer, 'clusterclick', function(cluster) {
-          var markrs = cluster.getCenter();
-          console.log(markrs);
-          console.log(bounds.getSouthWest().toString());
+          var center = cluster.getCenter();
+          var lat = center.lat();
+          var lng = center.lng()
+          $('#photoModal').modal('show');
+          $('#main-pic-header').empty()
+          $('#main-pic').empty();
+          $('#gallery-pic').empty();
 
-          var bbox = bounds.toJSON();
-          var bboxString = bounds.toString().replace(/\(/g,"");
-          var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
-          console.log("hey: " + bboxString);
-          var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
-            apiParams.key + "&bbox=" + bboxString + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
-          glob_url = url;
-          $.getJSON(url, params, function(data) {
-            addMarkers(data.photos);
-          });
-          nearbyPictures(marker, results);
+          var base = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
+          var query = base + lat.toString() + "," + lng.toString();
+          var title = "Flickr Pictures";  // default 
+          $.getJSON(query, params, function(data) {
+            console.log(data.results);
+          });      
+          $('#main-pic-header').append(title);
+          //$('#main-pic').append(content);
+          nearbyPictures(lat, lng);
       });
 
 
@@ -439,15 +441,15 @@ var setInfoWindowContent = function(marker, content,results, photo) {
     $('#main-pic-header').append(photo.title);
     $('#main-pic').append(content);
     console.log(photo);
+    var lat = marker.internalPosition.lat();
+    var lon = marker.internalPosition.lng();
 
-    nearbyPictures(marker, results);
+    nearbyPictures(lat, lon);
     //infoWindow.open(map, marker);
   });
 };
 
-function nearbyPictures(marker, photos){
-  var lat = marker.internalPosition.lat();
-  var lon = marker.internalPosition.lng();
+function nearbyPictures(lat, lon){
   const mbbox = (lon - 0.0005) + "," + (lat - 0.0005) + "," + (lon + 0.0005) + "," + (lat + 0.0005)
   var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
         apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
