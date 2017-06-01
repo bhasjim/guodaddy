@@ -197,9 +197,9 @@ function initMap() {
         visible: true
       });
 
-      locMarker.addListener('click', function() {
-        // $('#locationInfo').slideDown();
-      });
+      // locMarker.addListener('click', function() {
+      //   // $('#locationInfo').slideDown();
+      // });
 
 
 
@@ -213,8 +213,56 @@ function initMap() {
 
       });
       infoWindow = new google.maps.InfoWindow({disableAutoPan : true});
-      markerClusterer = new MarkerClusterer(map, markers, {imagePath: './../images/m', minimumClusterSize: 1, maxZoom: 20})
 
+
+
+      var clusterStyles = [
+        {
+            textColor: 'white',
+            textSize:1,
+            url: './../images/m1.png',
+            height: 29,
+            width: 30
+        },
+        {
+            textColor: 'white',
+            textSize:1,
+            url: './../images/m2.png',
+            height: 42,
+            width: 43
+        },
+        {
+            textColor: 'white',
+            textSize:1,
+            url: './../images/m3.png',
+            height: 57,
+            width: 56
+        },
+        {
+            textColor: 'white',
+            textSize:1,
+            url: './../images/m4.png',
+            height: 69,
+            width: 68
+        },
+        {
+            textColor: 'white',
+            textSize:1,
+            url: './../images/m5.png',
+            height: 80,
+            width: 79
+        }
+    ];
+
+      var mcOptions = {
+          gridSize: 20,
+          styles: clusterStyles,
+          minimumClusterSize:1,
+          maxZoom: 20
+      };
+
+      markerClusterer = new MarkerClusterer(map, markers, mcOptions)
+      console.log(markerClusterer.getGridSize());
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
@@ -359,7 +407,7 @@ var setInfoWindowContent = function(marker, content,results, photo) {
 };
 
 function nearbyPictures(lat, lon){
-  rad = (24-map.zoom) * 0.0001;
+  rad = (40-map.zoom) * 0.001;
   const mbbox = (lon - rad) + "," + (lat - rad) + "," + (lon + rad) + "," + (lat + 0.0005)
   var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
         apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
