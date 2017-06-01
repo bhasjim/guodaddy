@@ -365,9 +365,12 @@ MarkerClusterer.prototype.getMaxZoom = function() {
 MarkerClusterer.prototype.calculator_ = function(markers, numStyles) {
   var index = 0;
   var count = markers.length;
-  var dv = count;
+  var dv = count/2;
+  if(dv==0){
+    index=1;
+  }
   while (dv !== 0) {
-    dv = parseInt(dv / 3, 10);
+    dv = parseInt(dv / 2, 10);
     index++;
   }
 
