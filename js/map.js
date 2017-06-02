@@ -4,7 +4,6 @@ var infoWindow;
 var markerClusterer = null;
 var chicago = {lat: 41.85, lng: -87.65};
 var map, errorWindow;
-var which_date = "ever";
 
 
 
@@ -62,40 +61,11 @@ $('#tagsearch').on('itemRemoved', function(event) {
   }
 });
 
-$(".btn-secondary").on("click", function(event) {
-  $('#Group .focus').each(function(){
-      answer= $(this).attr('id'); 
-  }); 
-  if (which_date != answer) {
-    //refresh the map
-    deleteMarkers();  // clears map
-    if (markerClusterer) {    // clears clusters
-      markerClusterer.clearMarkers();
-    }
-    if(map){
-      getPhotoData(map.getBounds());
-    }
-  }
-});
-
 $('#tagsearch').tagsinput({
   trimValue: true,
   confirmKeys: [13]
 
 });
-
-var getTS = function() { 
-        var ts = Math.round((new Date()).getTime() / 1000);
-        var answer= '';
-            $('#Group .focus').each(function(){
-                answer= $(this).attr('id'); 
-                which_date = answer;
-            }); 
-        if (answer === "ever") return "0";
-        if (answer === "year") return (ts - 31536000).toString;
-        if (answer === "week") return (ts - 604800).toString;
-        if (answer === "year") return (ts - 86400).toString;
-      }
 
 
 var getPhotoData = function(bounds) {
@@ -104,12 +74,8 @@ var getPhotoData = function(bounds) {
       var bbox = bounds.toJSON();
       var bboxString = bounds.toString().replace(/\(/g,"");
       var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
-      var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search"+
-      "&api_key=" + apiParams.key + 
-      "&bbox=" + bboxString + 
-      "&tags="+ apiParams.tags +
-      "&min_upload_date=" +  getTS()
-      "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
+      var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
+        apiParams.key + "&bbox=" + bboxString + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
       $.getJSON(url, params, function(data) {
         addMarkers(data.photos);
       });
@@ -590,7 +556,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 $(document).ready(function() {
   initMap();
-  $('#ever').focus();
 });
 
 
