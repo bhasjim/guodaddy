@@ -104,8 +104,8 @@ var getPhotoData = function(bounds) {
       var bbox = bounds.toJSON();
       var bboxString = bounds.toString().replace(/\(/g,"");
       var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
-      var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&"+
-      "api_key=" + apiParams.key + 
+      var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search"+
+      "&api_key=" + apiParams.key + 
       "&bbox=" + bboxString + 
       "&tags="+ apiParams.tags +
       "&min_upload_date=" +  getTS()
@@ -589,8 +589,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 $(document).ready(function() {
-  $('#ever').focus();
   initMap();
+  $('#ever').focus();
 });
 
 
