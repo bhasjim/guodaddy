@@ -89,12 +89,18 @@
           <div>
           <label for="dateinput">Since:</label>
           </div>
-          <div class="btn-group" role="group" data-toggle="buttons" aria-label="Basic example" id=Group>
-            <button type="button" class="btn button-group btn-secondary" id="day">Yesterday </button>
-            <button type="button" class="btn button-group btn-secondary" id="week">Last Week</button>
-            <button type="button" class="btn button-group btn-secondary" id="year">Last Year</button>
-            <button type="button" class="btn button-group btn-secondary" id="ever">All Time</button>
-        </div>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Beginning of Time
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#" data-value="day">Yesterday</a></li>
+              <li><a href="#" data-value="week">Last Week</a></li>
+              <li><a href="#" data-value="year">Last Year</a></li>
+              <li><a href="#" data-value="ever">Beginning of Time</a></li>
+            </ul>
+          </div>
         </div>
     </div>
 

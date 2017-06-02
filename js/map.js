@@ -5,6 +5,7 @@ var markerClusterer = null;
 var chicago = {lat: 41.85, lng: -87.65};
 var map, errorWindow;
 var which_date = "ever";
+var answer = "ever";
 
 
 
@@ -62,10 +63,13 @@ $('#tagsearch').on('itemRemoved', function(event) {
   }
 });
 
-$(".btn-secondary").on("click", function(event) {
-  $('#Group .focus').each(function(){
-      answer= $(this).attr('id');
-  });
+$(".dropdown-menu li a").click(function(){
+  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+
+  answer= $(this).data('value');
+  console.log(answer);
+
   if (which_date != answer) {
     //refresh the map
     deleteMarkers();  // clears map
@@ -78,19 +82,14 @@ $(".btn-secondary").on("click", function(event) {
   }
 });
 
-$('#tagsearch').tagsinput({
-  trimValue: true,
-  confirmKeys: [13]
-
-});
-
 var getTS = function() {
         var ts = Math.round((new Date()).getTime() / 1000);
-        var answer= '';
-            $('#Group .focus').each(function(){
-                answer= $(this).attr('id');
-                which_date = answer;
-            });
+        // var answer= '';
+        // answer= $('.dropwdown-menu li a').data('value');
+
+        console.log("TS" + answer)
+        which_date = answer;
+
         if (answer === "year") return (ts - 31536000).toString();
         if (answer === "week") return (ts - 604800).toString();
         if (answer === "day") return (ts - 86400).toString();
