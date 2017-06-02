@@ -555,6 +555,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 $(document).ready(function() {
+  $('#ever').focus();
   initMap();
 });
 
