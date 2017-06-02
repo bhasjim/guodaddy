@@ -4,6 +4,7 @@ var infoWindow;
 var markerClusterer = null;
 var chicago = {lat: 41.85, lng: -87.65};
 var map, errorWindow;
+var nearbyPics = []
 
 
 
@@ -388,6 +389,7 @@ function initMap() {
           $('#main-pic-header').empty()
           $('#main-pic').empty();
           $('#gallery-pic').empty();
+          $('.pic-rotate').hide();
 
           var base = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
           var query = base + lat.toString() + "," + lng.toString();
@@ -522,6 +524,7 @@ function nearbyPictures(lat, lon){
       $.each(data.photos.photo, function(i, photo) {
         imgHTML = "<img class=\"grid-pic\" data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
         $('#gallery-pic').append(imgHTML);
+        nearbyPics.push()
       });
     }
   });
@@ -535,6 +538,7 @@ $(document).on('click', '.grid-pic',function(){
   source = $(this)[0].src;
   source = source.substring(0, source.length - 5)
   $('#main-pic').append("<img src='" + source + "z.jpg' />");
+  $('.pic-rotate').show();
   $('#photoModal').scrollTop(0);
 });
 
