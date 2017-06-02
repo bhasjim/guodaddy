@@ -505,7 +505,7 @@ function initMap() {
     ];
 
       var mcOptions = {
-          gridSize: 30,
+          gridSize: 20,
           styles: clusterStyles,
           minimumClusterSize:1,
           maxZoom: 20
