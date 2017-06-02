@@ -64,8 +64,8 @@ $('#tagsearch').on('itemRemoved', function(event) {
 
 $(".btn-secondary").on("click", function(event) {
   $('#Group .focus').each(function(){
-      answer= $(this).attr('id'); 
-  }); 
+      answer= $(this).attr('id');
+  });
   if (which_date != answer) {
     //refresh the map
     deleteMarkers();  // clears map
@@ -84,13 +84,13 @@ $('#tagsearch').tagsinput({
 
 });
 
-var getTS = function() { 
+var getTS = function() {
         var ts = Math.round((new Date()).getTime() / 1000);
         var answer= '';
             $('#Group .focus').each(function(){
-                answer= $(this).attr('id'); 
+                answer= $(this).attr('id');
                 which_date = answer;
-            }); 
+            });
         if (answer === "ever") return "0";
         if (answer === "year") return (ts - 31536000).toString;
         if (answer === "week") return (ts - 604800).toString;
@@ -105,10 +105,10 @@ var getPhotoData = function(bounds) {
       var bboxString = bounds.toString().replace(/\(/g,"");
       var bboxString = bounds.getSouthWest().lng().toString() + "," + bounds.getSouthWest().lat().toString() + "," + bounds.getNorthEast().lng().toString() + "," + bounds.getNorthEast().lat().toString();
       var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search"+
-      "&api_key=" + apiParams.key + 
-      "&bbox=" + bboxString + 
+      "&api_key=" + apiParams.key +
+      "&bbox=" + bboxString +
       "&tags="+ apiParams.tags +
-      "&min_upload_date=" +  getTS()
+      //"&min_upload_date=" +  getTS()
       "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
       $.getJSON(url, params, function(data) {
         addMarkers(data.photos);
@@ -607,7 +607,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 var addMarkers = function(results) {
   var photoLocation, marker, imgHTML;
   $.each(results.photo, function(i, photo) {
-    var photoMarker = new google.maps.MarkerImage('./../images/cameralol.png',
+    var photoMarker = new google.maps.MarkerImage('./../images/m1.png',
       null, // size
       null, // origin
       new google.maps.Point( 0, 0 ), // anchor (move to center of marker)
