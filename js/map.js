@@ -91,10 +91,10 @@ var getTS = function() {
                 answer= $(this).attr('id'); 
                 which_date = answer;
             }); 
-        if (answer === "ever") return "0";
-        if (answer === "year") return (ts - 31536000).toString;
-        if (answer === "week") return (ts - 604800).toString;
-        if (answer === "year") return (ts - 86400).toString;
+        if (answer === "year") return (ts - 31536000).toString();
+        if (answer === "week") return (ts - 604800).toString();
+        if (answer === "day") return (ts - 86400).toString();
+        return "0";
       }
 
 
@@ -108,8 +108,9 @@ var getPhotoData = function(bounds) {
       "&api_key=" + apiParams.key + 
       "&bbox=" + bboxString + 
       "&tags="+ apiParams.tags +
-      "&min_upload_date=" +  getTS()
+      "&min_upload_date=" +  getTS() +
       "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
+      console.log(url);
       $.getJSON(url, params, function(data) {
         addMarkers(data.photos);
       });
@@ -550,7 +551,11 @@ function nearbyPictures(lat, lon){
   rad = (40-map.zoom) * 0.001;
   const mbbox = (lon - rad) + "," + (lat - rad) + "," + (lon + rad) + "," + (lat + 0.0005)
   var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" +
-        apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
+        apiParams.key + 
+        "&bbox=" + mbbox + 
+        "&tags="+ apiParams.tags + 
+        "&min_upload_date" + getTS() + 
+        "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
     if (data.photos.photo.length > 1) {
       $.each(data.photos.photo, function(i, photo) {
