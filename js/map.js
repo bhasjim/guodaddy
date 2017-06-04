@@ -693,17 +693,23 @@ $('.pic-rotate').on('click', function(){
 
 $(document).on('keydown',function(e){
   if( !$('#main-pic').is(':empty') && $('#photoModal').hasClass('in')){
-    console.log($('#main-pic'));
     curr_ind = $('#main-pic').children().data('ind');
-    if (curr_ind == 0 || curr_ind == (nearbyPics.length -1)){
-      return;
-    }
+    console.log(curr_ind);
+
+
     switch(e.which){
       case 37:
+        if (curr_ind == 0){
+          return
+        }
+
         changePic(curr_ind-1);
         
         break;
       case 39:
+        if(curr_ind == (nearbyPics.length -1)){
+          return
+        }
         changePic(curr_ind+1);
         break;
     }
