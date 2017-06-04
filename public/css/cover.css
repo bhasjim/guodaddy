@@ -9,24 +9,37 @@
   height: 100%;
 }
 
+.button-group {
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(75, 205, 242); /* Green */
+}
+
+.button-group:focus {
+    background-color: rgb(75, 205, 242); 
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(75, 205, 242); /* Green */
+    outline: none;
+}
+
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .navbar-custom {
-  background-color: #222#4bcdf2222;
+  background-color: #222222;
   border-color: transparent;
 }
 .navbar-header .exposure {
   font-size: 30px;
-  color: #4bcdf2;
+  color: #00c7ff;
   font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
 .navbar-header .exposure:hover {
   color: #2d8da8;
 }
 .navbar-header .exposure:focus {
-  color: #4bcdf2;
+  color: #00c7ff;
 }
 
 
@@ -85,32 +98,4 @@ header .intro-text .slogan-heading {
             }
         }
     }
-}
-
-.btn-xl {
-  color: white;
-  background-color: #1DCDA4;
-  border-color: #1DCDA4;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  border-radius: 3px;
-  font-size: 18px;
-  padding: 20px 40px;
-}
-.btn-xl:hover,
-.open .dropdown-toggle.btn-xl {
-  color: white;
-  background-color: #17a080;
-  border-color: #159779;
-}
-
-.btn-xl:focus{
-  color:white;
-}
-
-
-
-.imag {
-  margin: 5px;
 }
