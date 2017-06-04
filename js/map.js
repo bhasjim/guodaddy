@@ -4,7 +4,8 @@ var infoWindow;
 var markerClusterer = null;
 var chicago = {lat: 41.85, lng: -87.65};
 var map, errorWindow;
-var nearbyPics = []
+var nearbyPics = [];
+var nearbyTitles = [];
 
 
 
@@ -521,10 +522,14 @@ function nearbyPictures(lat, lon){
         apiParams.key + "&bbox=" + mbbox + "&tags="+ apiParams.tags + "&sort=interestingness-desc&has_geo=1&extras=geo&format=json&jsoncallback=?";
   $.getJSON(url, params, function(data) {
     if (data.photos.photo.length > 1) {
+      var photo_ind = 0;
       $.each(data.photos.photo, function(i, photo) {
-        imgHTML = "<img class=\"grid-pic\" data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
+        src = 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret;
+        imgHTML = "<img class=\"grid-pic\" data-ind='"  + photo_ind + "' data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
         $('#gallery-pic').append(imgHTML);
-        nearbyPics.push()
+        nearbyPics.push(src);
+        nearbyTitles.push(photo.title);
+        photo_ind++;
       });
     }
   });
@@ -536,11 +541,62 @@ $(document).on('click', '.grid-pic',function(){
   $('#main-pic').empty();
   $('#main-pic-header').append($(this).data('title'));
   source = $(this)[0].src;
-  source = source.substring(0, source.length - 5)
-  $('#main-pic').append("<img src='" + source + "z.jpg' />");
+  curr_ind = $(this)[0].dataset.ind;
+  console.log(curr_ind);
+  source = source.substring(0, source.length - 6)
+  $('#main-pic').append("<img data-ind='"  + curr_ind + "' src='" + source + "_z.jpg' />");
   $('.pic-rotate').show();
   $('#photoModal').scrollTop(0);
 });
+
+$('.pic-rotate').on('click', function(){
+  if( !$('#main-pic').is(':empty') ){
+    curr_ind = $('#main-pic').children().data('ind');
+    if (curr_ind == 0 || curr_ind == (nearbyPics.length -1)){
+      return;
+    }
+    if ($(this).hasClass("glyphicon-chevron-left")){
+    //console.log("left");
+      changePic(curr_ind-1);
+    }
+    else if($(this).hasClass("glyphicon-chevron-right")){
+      // console.log("right");
+      changePic(curr_ind+1);
+      
+    }
+    $('#photoModal').scrollTop(0);
+
+  }
+
+});
+
+$(document).on('keydown',function(e){
+  if( !$('#main-pic').is(':empty') && $('#photoModal').hasClass('in')){
+    console.log($('#main-pic'));
+    curr_ind = $('#main-pic').children().data('ind');
+    if (curr_ind == 0 || curr_ind == (nearbyPics.length -1)){
+      return;
+    }
+    switch(e.which){
+      case 37:
+        changePic(curr_ind-1);
+        
+        break;
+      case 39:
+        changePic(curr_ind+1);
+        break;
+    }
+  }
+  
+})
+
+
+function changePic(index){
+  $('#main-pic-header').empty();
+  $('#main-pic').empty();
+  $('#main-pic-header').append(nearbyTitles[index]);
+  $('#main-pic').append("<img data-ind='"  + (index) + "' src='" + nearbyPics[index] + "_z.jpg' />");
+}
 
 var deleteMarkers = function() {
   for (i = 0; i < markers.length; i += 1) {
