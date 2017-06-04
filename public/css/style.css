@@ -68,6 +68,9 @@ html,body{
 .center{
 	text-align:center;
 }
+.inblock{
+	display:inline-block;
+}
 
 .photo-header{
 	padding:15px;
@@ -81,6 +84,10 @@ html,body{
 	cursor:pointer;
 }
 
+#top-modal{
+	text-align:center;
+}
+
 #main-pic img{
 	max-width:640px;
 }
@@ -88,6 +95,12 @@ html,body{
 #pic-info{
 	width:640px;
 	margin:auto;
+}
+
+.pic-rotate{
+	font-size:30px;
+	margin:auto;
+	cursor:pointer;
 }
 
 #main-pic-header{
