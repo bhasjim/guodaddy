@@ -671,6 +671,8 @@ function nearbyPictures(lat, lon){
   $.getJSON(url, params, function(data) {
     if (data.photos.photo.length > 1) {
       var photo_ind = 0;
+      nearbyPics = [];
+      nearbyTitles = [];
       $.each(data.photos.photo, function(i, photo) {
         src = 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret;
         imgHTML = "<img class=\"grid-pic\" data-ind='"  + photo_ind + "' data-title='" + photo.title + "' src=" + 'http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_q.jpg' + " alt=" + photo.title + "/>";
